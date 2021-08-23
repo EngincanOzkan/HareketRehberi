@@ -1,5 +1,6 @@
 ﻿using HareketRehberi.Domain.Consts;
 using HareketRehberi.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -24,6 +25,7 @@ namespace HareketRehberiAPI.Controllers
         }
 
         [HttpPost, Route("login")]
+        [AllowAnonymous]
         public IActionResult Login([FromBody] LoginModel user) {
             if (user == null)
                 return BadRequest("Geçersiz kullanıcı talebi");
