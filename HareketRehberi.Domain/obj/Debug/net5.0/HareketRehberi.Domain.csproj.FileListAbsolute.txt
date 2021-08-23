@@ -1,0 +1,12 @@
+C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\bin\Debug\net5.0\HareketRehberi.Domain.deps.json
+C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\bin\Debug\net5.0\HareketRehberi.Domain.dll
+C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\bin\Debug\net5.0\ref\HareketRehberi.Domain.dll
+C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\bin\Debug\net5.0\HareketRehberi.Domain.pdb
+C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\obj\Debug\net5.0\HareketRehberi.Domain.csproj.AssemblyReference.cache
+C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\obj\Debug\net5.0\HareketRehberi.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\obj\Debug\net5.0\HareketRehberi.Domain.AssemblyInfoInputs.cache
+C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\obj\Debug\net5.0\HareketRehberi.Domain.AssemblyInfo.cs
+C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\obj\Debug\net5.0\HareketRehberi.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\obj\Debug\net5.0\HareketRehberi.Domain.dll
+C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\obj\Debug\net5.0\ref\HareketRehberi.Domain.dll
+C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\obj\Debug\net5.0\HareketRehberi.Domain.pdb

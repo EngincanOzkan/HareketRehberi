@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HareketRehberi.Domain.Consts;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 namespace HareketRehberiAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -24,6 +26,7 @@ namespace HareketRehberiAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = Role.Admin)]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();

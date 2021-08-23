@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HareketRehberiAPI", "HareketRehberiAPI\HareketRehberiAPI.csproj", "{C9BF25FB-EF9D-4EFA-B61C-63A3CD7CB4B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HareketRehberiAPI", "HareketRehberiAPI\HareketRehberiAPI.csproj", "{C9BF25FB-EF9D-4EFA-B61C-63A3CD7CB4B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HareketRehberi.Domain", "HareketRehberi.Domain\HareketRehberi.Domain.csproj", "{01D3F7C5-B19F-444D-9F5D-8C1278EA6AE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HareketRehberi.BL", "HareketRehberi.BL\HareketRehberi.BL.csproj", "{0392C0C5-1C0D-42FD-BD8F-3D6621F93045}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{C9BF25FB-EF9D-4EFA-B61C-63A3CD7CB4B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9BF25FB-EF9D-4EFA-B61C-63A3CD7CB4B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9BF25FB-EF9D-4EFA-B61C-63A3CD7CB4B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01D3F7C5-B19F-444D-9F5D-8C1278EA6AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01D3F7C5-B19F-444D-9F5D-8C1278EA6AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01D3F7C5-B19F-444D-9F5D-8C1278EA6AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01D3F7C5-B19F-444D-9F5D-8C1278EA6AE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0392C0C5-1C0D-42FD-BD8F-3D6621F93045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0392C0C5-1C0D-42FD-BD8F-3D6621F93045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0392C0C5-1C0D-42FD-BD8F-3D6621F93045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0392C0C5-1C0D-42FD-BD8F-3D6621F93045}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

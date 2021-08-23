@@ -4,14 +4,14 @@
     "C:\\Users\\Engincan\\source\\repos\\HareketRehberi\\HareketRehberiAPI\\HareketRehberiAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Engincan\\source\\repos\\HareketRehberi\\HareketRehberiAPI\\HareketRehberiAPI.csproj": {
+    "C:\\Users\\Engincan\\source\\repos\\HareketRehberi\\HareketRehberi.Domain\\HareketRehberi.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Engincan\\source\\repos\\HareketRehberi\\HareketRehberiAPI\\HareketRehberiAPI.csproj",
-        "projectName": "HareketRehberiAPI",
-        "projectPath": "C:\\Users\\Engincan\\source\\repos\\HareketRehberi\\HareketRehberiAPI\\HareketRehberiAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Engincan\\source\\repos\\HareketRehberi\\HareketRehberi.Domain\\HareketRehberi.Domain.csproj",
+        "projectName": "HareketRehberi.Domain",
+        "projectPath": "C:\\Users\\Engincan\\source\\repos\\HareketRehberi\\HareketRehberi.Domain\\HareketRehberi.Domain.csproj",
         "packagesPath": "C:\\Users\\Engincan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Engincan\\source\\repos\\HareketRehberi\\HareketRehberiAPI\\obj\\",
+        "outputPath": "C:\\Users\\Engincan\\source\\repos\\HareketRehberi\\HareketRehberi.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Engincan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,7 +39,69 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Engincan\\source\\repos\\HareketRehberi\\HareketRehberiAPI\\HareketRehberiAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Engincan\\source\\repos\\HareketRehberi\\HareketRehberiAPI\\HareketRehberiAPI.csproj",
+        "projectName": "HareketRehberiAPI",
+        "projectPath": "C:\\Users\\Engincan\\source\\repos\\HareketRehberi\\HareketRehberiAPI\\HareketRehberiAPI.csproj",
+        "packagesPath": "C:\\Users\\Engincan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Engincan\\source\\repos\\HareketRehberi\\HareketRehberiAPI\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Engincan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\Engincan\\source\\repos\\HareketRehberi\\HareketRehberi.Domain\\HareketRehberi.Domain.csproj": {
+                "projectPath": "C:\\Users\\Engincan\\source\\repos\\HareketRehberi\\HareketRehberi.Domain\\HareketRehberi.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
