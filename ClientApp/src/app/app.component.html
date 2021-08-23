@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My App</title>
+</head>
+<body>
+  <p>My App</p>
+  <app-login></app-login>
+  <h1 *ngIf='isUserAuthenticated'>Login olduuuk! <button class="btn btn-lg btn-danger btn-block" (click)="logOut()">Güvenli Çıkış</button></h1>
+</body>
+</html>

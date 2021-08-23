@@ -5,9 +5,30 @@ VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HareketRehberiAPI", "HareketRehberiAPI\HareketRehberiAPI.csproj", "{C9BF25FB-EF9D-4EFA-B61C-63A3CD7CB4B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HareketRehberi.Domain", "HareketRehberi.Domain\HareketRehberi.Domain.csproj", "{01D3F7C5-B19F-444D-9F5D-8C1278EA6AE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HareketRehberi.Domain", "HareketRehberi.Domain\HareketRehberi.Domain.csproj", "{01D3F7C5-B19F-444D-9F5D-8C1278EA6AE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HareketRehberi.BL", "HareketRehberi.BL\HareketRehberi.BL.csproj", "{0392C0C5-1C0D-42FD-BD8F-3D6621F93045}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HareketRehberi.BL", "HareketRehberi.BL\HareketRehberi.BL.csproj", "{0392C0C5-1C0D-42FD-BD8F-3D6621F93045}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ClientApp", "ClientApp\", "{B7EDD960-B3DA-4F91-BAE3-E9081C450B8B}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_59906"
+		Debug.AspNetCompiler.PhysicalPath = "ClientApp\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_59906\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_59906"
+		Release.AspNetCompiler.PhysicalPath = "ClientApp\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_59906\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "59906"
+		SlnRelativePath = "ClientApp\"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +48,10 @@ Global
 		{0392C0C5-1C0D-42FD-BD8F-3D6621F93045}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0392C0C5-1C0D-42FD-BD8F-3D6621F93045}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0392C0C5-1C0D-42FD-BD8F-3D6621F93045}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7EDD960-B3DA-4F91-BAE3-E9081C450B8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7EDD960-B3DA-4F91-BAE3-E9081C450B8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7EDD960-B3DA-4F91-BAE3-E9081C450B8B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7EDD960-B3DA-4F91-BAE3-E9081C450B8B}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
