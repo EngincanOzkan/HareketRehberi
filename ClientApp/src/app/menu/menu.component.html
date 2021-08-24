@@ -7,11 +7,14 @@ navbar-dark bg-dark">
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
+            <li *ngIf="!isUserAdmin" class="nav-item">
                 <a class="nav-link" aria-current="page" [routerLink]="['/home']" routerLinkActive="active" 
                 [routerLinkActiveOptions]="{exact: true}">Home</a>
             </li>
-            
+            <li *ngIf="isUserAdmin" class="nav-item">
+              <a class="nav-link" aria-current="page" [routerLink]="['/admin']" routerLinkActive="active" 
+              [routerLinkActiveOptions]="{exact: true}">Admin</a>
+          </li>
           </ul>
           <ul class="navbar-nav">
             <li *ngIf="!isUserAuthenticated" class="nav-item">

@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class MenuComponent implements OnInit {
 
   @Input() isUserAuthenticated: boolean;
+  @Input() isUserAdmin: boolean;
 
   constructor() { }
 
