@@ -16,8 +16,4 @@ export class AppComponent {
       return false;
     }
   }
-
-  logOut() {
-    localStorage.removeItem("jwt");
-  }
 }
