@@ -1,0 +1,37 @@
+<form class="form-system-user-add-edit" #SystemUserForm="ngForm" (ngSubmit)="save(SystemUserForm)">
+    <div class="container-fluid">
+      <h2 class="form-signin-heading">{{AddEditPageTitle}}</h2>
+      <div class="alert alert-danger" *ngIf="PasswordsNotDone">Şifre ve Şifre Tekrarı uyuşmuyor</div>
+      <br/>
+      <div class="input-group mb-3">
+        <span class="input-group-text col-sm-2" id="inputGroup-sizing-default">Kullanıcı Adı:</span>
+        <input type="text" id="username" name="username" [(ngModel)]="UserName" class="form-control" placeholder="Kullanıcı adı giriniz" required autofocus>
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text col-sm-2" id="inputGroup-sizing-default">E-Posta:</span>
+        <input type="email" id="email" name="email" [(ngModel)]="Email" class="form-control" placeholder="Email giriniz">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text col-sm-2" id="inputGroup-sizing-default">Telefon:</span>
+        <input type="text" id="phone" name="phone" [(ngModel)]="Phone" class="form-control" placeholder="Telefon giriniz">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text col-sm-2" id="inputGroup-sizing-default">Şifre:</span>
+        <input type="password" id="password" name="password" [(ngModel)]="Password" class="form-control" placeholder="Kullanıcının şiresini giriniz" required>
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text col-sm-2" id="inputGroup-sizing-default">Şifre Tekrar:</span>
+        <input type="password" class="form-control" [(ngModel)]="PasswordAgain"  name="PasswordAgain"placeholder="Şifreyi tekrar giriniz" required>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input col-sm-2" [(ngModel)]="IsAdmin" id="isAdmin" name="isAdmin">
+        <label class="form-check-label" for="isAdmin"> Yönetici mi?</label>
+      </div>
+      <div *ngIf="SystemUser" class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary" type="submit">Güncelle</button>
+      </div>
+      <div *ngIf="!SystemUser" class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary" type="submit">Kaydet</button>
+      </div>
+    </div>
+  </form>

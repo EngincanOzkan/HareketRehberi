@@ -1,8 +1,9 @@
-﻿using AutoMapper;
-using HareketRehberi.Data.Repos.SystemUserRepos;
+﻿using HareketRehberi.Data.Repos.SystemUserRepos;
 using HareketRehberi.Domain.Models.Entities;
+using HareketRehberi.Domain.Models.Requests;
 using System.Collections.Generic;
-using System.Text.Json;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace HareketRehberi.BL.SystemUserBL
@@ -28,14 +29,47 @@ namespace HareketRehberi.BL.SystemUserBL
             return user;
         }
 
-        public async Task<SystemUser> Create(SystemUser user)
+        public async Task<SystemUser> GetByUserName(string userName)
         {
+            var user = await _systemUserRepo.GetByUserNameAsync(userName);
+            return user;
+        }
+
+        public async Task<SystemUser> Create(SystemUserRequest userRequest)
+        {
+            if (await IsUserExists(userRequest.UserName, null)) throw new System.Exception("Kullanıcı adı daha önceden alınmış!!!");
+
+            using var hmac = new HMACSHA512();
+            var user = new SystemUser
+            {
+                UserName = userRequest.UserName,
+                Email = userRequest.Email,
+                Phone = userRequest.Phone,
+                IsAdmin = userRequest.IsAdmin,
+                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(userRequest.Password)),
+                PasswordKey = hmac.Key
+            };
+
             var userCrearted = await _systemUserRepo.CreateAsync(user);
             return userCrearted;
         }
 
-        public async Task<SystemUser> Update(SystemUser user)
+        public async Task<SystemUser> Update(SystemUserRequest userRequest)
         {
+            if (await IsUserExists(userRequest.UserName, userRequest.Id) || userRequest.Id == null || userRequest.Id == 0) throw new System.Exception("Kullanıcı adı daha önceden alınmış!!!");
+
+            using var hmac = new HMACSHA512();
+            var user = new SystemUser
+            {
+                Id = (int)userRequest.Id,
+                UserName = userRequest.UserName,
+                Email = userRequest.Email,
+                Phone = userRequest.Phone,
+                IsAdmin = userRequest.IsAdmin,
+                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(userRequest.Password)),
+                PasswordKey = hmac.Key
+            };
+
             var userUpdated = await _systemUserRepo.UpdateAsync(user);
             return userUpdated;
         }
@@ -44,6 +78,11 @@ namespace HareketRehberi.BL.SystemUserBL
         {
             var userDeleted = await _systemUserRepo.DeleteAsync(id);
             return userDeleted;
+        }
+
+        private async Task<bool> IsUserExists(string userName, int? id)
+        {
+            return await _systemUserRepo.AnyAsync(userName, id);
         }
     }
 }

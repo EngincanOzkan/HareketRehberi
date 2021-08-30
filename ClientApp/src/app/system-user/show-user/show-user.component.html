@@ -1,0 +1,29 @@
+
+<div class="float-right">
+    <button type="button" class="btn btn-primary" (click)="addClick()">
+        Yeni Kullanıcı Ekle
+    </button>
+</div> <br/>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Kullanıcı Id</th>
+            <th>Kullanıcı Adı</th>
+            <th>Seçenekler</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of SystemUsersList">
+            <td>{{user.id}}</td>
+            <td>{{user.userName}}</td>
+            <td>
+                <button type="button" class="btn btn-light mt-1" (click)="editClick(user)">
+                    Düzenle
+                </button>
+                <button type="button" class="btn btn-light mt-1">
+                    Sil
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
