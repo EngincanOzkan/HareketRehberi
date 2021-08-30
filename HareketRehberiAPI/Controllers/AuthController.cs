@@ -1,5 +1,6 @@
 ﻿using HareketRehberi.Domain.Consts;
 using HareketRehberi.Domain.Models;
+using HareketRehberi.Domain.Models.Requests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -43,7 +44,7 @@ namespace HareketRehberiAPI.Controllers
                     issuer: _config.Value.BaseSiteRoot,
                     audience: _config.Value.BaseSiteRoot,
                     claims: claims,
-                    expires: DateTime.Now.AddMinutes(5),
+                    expires: DateTime.Now.AddMinutes(30),
                     signingCredentials: signingCredentials
                 );
 
