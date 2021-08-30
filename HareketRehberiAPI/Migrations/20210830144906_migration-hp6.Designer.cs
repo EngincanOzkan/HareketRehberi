@@ -3,14 +3,16 @@ using System;
 using HareketRehberi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HareketRehberiAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210830144906_migration-hp6")]
+    partial class migrationhp6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,20 +28,17 @@ namespace HareketRehberiAPI.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("text");
 
-                    b.Property<bool>("IsAdmin")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<byte[]>("PasswordHash")
                         .HasColumnType("varbinary(4000)");
 
                     b.Property<byte[]>("PasswordKey")
                         .HasColumnType("varbinary(4000)");
 
-                    b.Property<string>("Phone")
-                        .HasColumnType("text");
-
                     b.Property<string>("UserName")
                         .HasColumnType("text");
+
+                    b.Property<bool>("isAdmin")
+                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
 

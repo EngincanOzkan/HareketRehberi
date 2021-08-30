@@ -8,8 +8,10 @@ namespace HareketRehberi.Data.Repos.SystemUserRepos
     {
         Task<IEnumerable<SystemUser>> GetAllAsync();
         Task<SystemUser> GetAsync(int id);
+        Task<SystemUser> GetByUserNameAsync(string userName);
         Task<SystemUser> CreateAsync(SystemUser user);
         Task<SystemUser> UpdateAsync(SystemUser user);
         Task<SystemUser> DeleteAsync(int id);
+        Task<bool> AnyAsync(string userName, int? id);
     }
 }
