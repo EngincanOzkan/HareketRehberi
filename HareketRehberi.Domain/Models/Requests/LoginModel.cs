@@ -1,4 +1,4 @@
-﻿namespace HareketRehberi.Domain.Models
+﻿namespace HareketRehberi.Domain.Models.Requests
 {
     public class LoginModel
     {

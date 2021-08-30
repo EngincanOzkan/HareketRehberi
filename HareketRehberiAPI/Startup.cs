@@ -1,9 +1,15 @@
+using AutoMapper;
+using HareketRehberi.BL.SystemUserBL;
+using HareketRehberi.Data;
+using HareketRehberi.Data.Repos.SystemUserRepos;
+using HareketRehberi.Domain;
 using HareketRehberi.Domain.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -65,6 +71,18 @@ namespace HareketRehberiAPI
                 });
             });
 
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MapperProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddDbContext<DataContext>(option => {
+                option.UseMySQL(Configuration.GetConnectionString("DefaultConnection"), q => q.MigrationsAssembly("HareketRehberiAPI"));
+            });
+
             services.AddOptions();
             services.Configure<MyAppConfig>(Configuration.GetSection("MyAppConfig"));
 
@@ -85,6 +103,9 @@ namespace HareketRehberiAPI
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetValue<string>("MyAppConfig:Secret")))
                 };
             });
+
+            services.AddTransient<ISystemUserRepo, SystemUserRepo>();
+            services.AddTransient<ISystemUserBL, SystemUserBL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
