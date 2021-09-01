@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/shared.service';
 
@@ -9,6 +9,7 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class ShowUserComponent implements OnInit {
   public SystemUsersList: any = [];
+  private SelectedUserIdForRemove: number = 0;
 
   constructor(
     private service:SharedService,
@@ -35,5 +36,17 @@ export class ShowUserComponent implements OnInit {
     this.service.AddSystemUsertitle = "Kullanıcı Düzenle";
     this.service.SystemUser = user;
     this.router.navigate(["/users/edit"]);
+  }
+
+  public removeClick(userId: number): void{
+    this.SelectedUserIdForRemove = userId;
+  }
+
+  public removeApproveClick(): void{
+    this.service.deleteSystemUser(this.SelectedUserIdForRemove).subscribe(response => {
+      this.router.navigate(["/users"]);
+    }, err => {
+      console.log(err);
+    });
   }
 }
