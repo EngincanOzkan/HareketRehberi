@@ -17,3 +17,18 @@
 <br />
 
 <app-pdf-add-delete-download-lesson  *ngIf="Lesson" [LessonId]="Lesson.id"></app-pdf-add-delete-download-lesson>
+
+<div class="container-fluid" *ngIf="Lesson">
+  <div *ngFor="let value of SoundComponentValues; let i = index">
+    <app-sound-add-delete-download-lesson 
+      [(SoundComponentValues)]="SoundComponentValues" 
+      Index="{{i}}"
+      [LessonId]="Lesson.id"
+      [soundFile]="value"
+    >
+    </app-sound-add-delete-download-lesson>
+  </div>
+  <div class="d-grid gap-2">
+    <button class="btn btn-success" type="submit" (click)="addComponent()">Yeni Ses Ekle</button>
+  </div>
+</div>

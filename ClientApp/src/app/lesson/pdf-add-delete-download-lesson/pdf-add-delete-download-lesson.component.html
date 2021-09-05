@@ -23,7 +23,7 @@
             <input type="file" #pdfFile placeholder="Choose file" (change)="uploadFile(pdfFile.files)" style="display: none" accept="application/pdf"/>
             <input type="text" class="form-control" placeholder="Dosya yüklenmedi" aria-label="Dosya yüklendikten sonra dosya adı buraya yazılır." value={{UploadedPdfFileName}} disabled>
             <button class="btn btn-primary mr-2" (click)="pdfFile.click()" type="button">Yükle</button>
-            <button class="btn btn-success mr-2" (click)="showPDF(LessonId)" type="button">İndir</button>
+            <button class="btn btn-success mr-2" *ngIf="UploadedPdfFileName" (click)="showPDF(LessonId)" type="button">İndir</button>
         </div>
     </div>
 </form>

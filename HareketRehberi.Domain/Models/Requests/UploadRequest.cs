@@ -3,5 +3,6 @@
     public class UploadRequest
     {
         public int LessonId { get; set; }
+        public int? PageNumber { get; set; }
     }
 }

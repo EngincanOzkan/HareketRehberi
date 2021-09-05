@@ -24,8 +24,8 @@ export class PdfAddDeleteDownloadLessonComponent implements OnInit {
   }
 
   public uploadedFileName(lessonId: number) {
-    this.shared.LessonPdfFileInfo(lessonId).subscribe((data: { fileName: string; }) => {
-      this.UploadedPdfFileName = data.fileName ? data.fileName : "";
+    this.shared.lessonPdfFileInfo(lessonId).subscribe((data: { fileName: string; }) => {
+      if(data) this.UploadedPdfFileName = data.fileName ? data.fileName : "";
     });
   }
 
