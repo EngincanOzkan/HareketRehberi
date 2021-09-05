@@ -74,15 +74,31 @@ export class SharedService {
   }
   ///END LESSON
 
-  ///START FILE OPERATIONS
+  ///START PDF FILE OPERATIONS
   uploadLessonPdf(val: any){
     return this.http.post(this.APIUrl +'/PdfFile/upload', val, { reportProgress: true, observe: 'events' });
   }
   downloadLessonPdf(val: any){
     return this.http.get(this.APIUrl +'/PdfFile/download/'+val,  { responseType: 'blob' });
   }
-  LessonPdfFileInfo(val: any): any{
-    return this.http.get(this.APIUrl +'/PdfFile/FileInfo/'+val);
+  lessonPdfFileInfo(val: any): any{
+    return this.http.get(this.APIUrl +'/PdfFile/LessonFileInfo/'+val);
   }
-  ///END FILE OPERATIONS
+  ///END PDF FILE OPERATIONS
+
+  ///START SOUND FILE OPERATIONS
+  uploadLessonSound(val: any){
+    return this.http.post(this.APIUrl +'/SoundFile/upload', val, { reportProgress: true, observe: 'events' });
+  }
+  downloadLessonSound(val: any){
+    return this.http.get(this.APIUrl +'/SoundFile/download/'+val,  { responseType: 'blob' });
+  }
+  lessonSoundFileInfo(val: any): any{
+    return this.http.get(this.APIUrl +'/SoundFile/LessonFileInfo/'+val);
+  }
+  deleteLessonSound(val: any): any{
+    return this.http.delete(this.APIUrl +'/SoundFile/'+val);
+  }
+  ///END SOUND FILE OPERATIONS
+
 }

@@ -16,8 +16,8 @@ namespace HareketRehberi.BL.LessonPdfFileRelationBL
 
         public async Task<IEnumerable<LessonPdfFileRelation>> GetAll()
         {
-            var users = await _lessonPdfFileRelationRepo.GetAllAsync();
-            return users;
+            var relations = await _lessonPdfFileRelationRepo.GetAllAsync();
+            return relations;
         }
 
         public async Task<LessonPdfFileRelation> Get(int id)

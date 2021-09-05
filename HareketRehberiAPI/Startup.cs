@@ -2,10 +2,12 @@ using AutoMapper;
 using HareketRehberi.BL.FileBL;
 using HareketRehberi.BL.LessonBL;
 using HareketRehberi.BL.LessonPdfFileRelationBL;
+using HareketRehberi.BL.LessonSoundFileRelationBL;
 using HareketRehberi.BL.SystemUserBL;
 using HareketRehberi.Data;
 using HareketRehberi.Data.Repos.LessonPdfFileRelationRepos;
 using HareketRehberi.Data.Repos.LessonRepos;
+using HareketRehberi.Data.Repos.LessonSoundFileRelationRepos;
 using HareketRehberi.Data.Repos.SystemUserRepos;
 using HareketRehberi.Domain;
 using HareketRehberi.Domain.Models;
@@ -115,6 +117,8 @@ namespace HareketRehberiAPI
             services.AddTransient<ILessonBL, LessonBL>();
             services.AddTransient<ILessonPdfFileRelationRepo, LessonPdfFileRelationRepo>();
             services.AddTransient<ILessonPdfFileRelationBL, LessonPdfFileRelationBL>();
+            services.AddTransient<ILessonSoundFileRelationRepo, LessonSoundFileRelationRepo>();
+            services.AddTransient<ILessonSoundFileRelationBL, LessonSoundFileRelationBL>();
             services.AddTransient<FileBL>();
         }
 

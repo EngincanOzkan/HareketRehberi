@@ -1,5 +1,6 @@
 import { HttpEventType } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { SoundFile } from 'src/app/Models/SoundFileModel';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
@@ -8,14 +9,18 @@ import { SharedService } from 'src/app/shared.service';
   styleUrls: ['./sound-add-delete-download-lesson.component.css']
 })
 export class SoundAddDeleteDownloadLessonComponent implements OnInit {
-
+  
   public UploadedSoundFileStatus: string;
   public UploadedSoundFileName: string;
+  public UploadedSoundFileId: number = 0;
   public SoundFileProgress: number;
+  public PageNumber: number;
+
   public blob: any;
   @Output() public onUploadFinished = new EventEmitter();
   @Input() public LessonId: number;
 
+  @Input() soundFile: SoundFile;
   @Input() Index: string;
 
   @Input() SoundComponentValues: any[];
@@ -26,44 +31,50 @@ export class SoundAddDeleteDownloadLessonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.uploadedFileName(this.LessonId);
-  }
-  
-  public uploadedFileName(lessonId: number) {
-    this.shared.LessonPdfFileInfo(lessonId).subscribe((data: { fileName: string; }) => {
-      this.UploadedSoundFileName = data.fileName ? data.fileName : "";
-    });
+    this.UploadedSoundFileName = this.soundFile.fileName;
+    this.UploadedSoundFileId = this.soundFile.id;
+    this.PageNumber = this.soundFile.pageNumber;
   }
 
   removeComponent() {
-    console.log(this.Index)
-    this.SoundComponentValues.splice(Number(this.Index), 1);
+    if(this.UploadedSoundFileId && this.UploadedSoundFileId != 0)
+    {
+      this.shared.deleteLessonSound(this.UploadedSoundFileId).subscribe(() => {
+        this.SoundComponentValues.splice(Number(this.Index), 1);
+      });
+    }else {
+      this.SoundComponentValues.splice(Number(this.Index), 1);
+    }
   }
 
   public uploadFile(files: any) {
     if (files.length === 0) return;
-
+    debugger;
     let fileToUpload = <File>files[0];
     const formData = new FormData();
     formData.append("file", fileToUpload, fileToUpload.name);
     formData.append("LessonId", this.LessonId.toString());
-    this.shared.uploadLessonPdf(formData).subscribe(event => {
+    formData.append("PageNumber", this.PageNumber.toString());
+    this.shared.uploadLessonSound(formData).subscribe(event => {
       console.log(event);
       if (event.type === HttpEventType.UploadProgress) {
         const total: number = event.total ? event.total : 1;  
         this.SoundFileProgress = Math.round(100 * event.loaded / total);
       }
       else if (event.type === HttpEventType.Response) {
-
+        this.soundFile = event.body as any;
         this.UploadedSoundFileStatus = 'Yüklem Tamamlandı';
         this.UploadedSoundFileName = fileToUpload.name;
+        this.UploadedSoundFileId = this.soundFile.id;
         this.onUploadFinished.emit(event.body);
+      }else {
+        this.UploadedSoundFileStatus = 'Yüklem Tamamlanamadı, sayfa numaralarının aynı olmadığından emin olunuz.';
       }
     });
   }
 
   public showSound(lessonId: any): void {
-    this.shared.downloadLessonPdf(lessonId)
+    this.shared.downloadLessonSound(this.UploadedSoundFileId)
         .subscribe(data => {
           this.blob = new Blob([data], {type: '.mp3'});
           
@@ -74,6 +85,10 @@ export class SoundAddDeleteDownloadLessonComponent implements OnInit {
           link.download = this.UploadedSoundFileName;
           link.click();
       });
+  }
+
+  setPageNumber(val:any){
+    this.PageNumber = val;
   }
 
 }

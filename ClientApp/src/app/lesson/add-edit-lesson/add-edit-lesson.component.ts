@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SoundFile } from 'src/app/Models/SoundFileModel';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class AddEditLessonComponent implements OnInit {
   public Lesson: any;
   public AddEditPageTitle: string;
   public LessonName: string;
-  public SoundComponentValues: any[] = [];
+  public SoundComponentValues: SoundFile[] = [];
 
   constructor(
     private shared: SharedService,
@@ -24,6 +25,7 @@ export class AddEditLessonComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.listSounds();
   }
 
   save(form: NgForm) {
@@ -48,8 +50,16 @@ export class AddEditLessonComponent implements OnInit {
       });
     }
   }
-  
+
   addComponent() {
-    this.SoundComponentValues.push({value:""});
+    this.SoundComponentValues.push(new SoundFile());
+  }
+
+  listSounds() {
+    if(this.Lesson) {
+      this.shared.lessonSoundFileInfo(this.Lesson.id).subscribe((data: SoundFile[]) => {
+        this.SoundComponentValues = data;
+      });
+   }
   }
 }

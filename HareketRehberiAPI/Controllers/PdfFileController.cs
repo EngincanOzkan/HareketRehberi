@@ -47,11 +47,10 @@ namespace HareketRehberiAPI.Controllers
             }
         }
 
-        [HttpGet("FileInfo/{LessonId}")]
+        [HttpGet("LessonFileInfo/{LessonId}")]
         public async Task<LessonPdfFileRelation> FileInfo(int lessonId)
         {
-             return await _fileBL.FileInfo(lessonId);
+             return await _fileBL.PdfFileInfo(lessonId);
         }
-
     }
 }

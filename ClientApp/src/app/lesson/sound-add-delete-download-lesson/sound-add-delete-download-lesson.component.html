@@ -17,12 +17,15 @@
                     </div>
                 </div>
             </div>
-            <span class="input-group-text col-sm-2" id="inputGroup-sizing-default">Eğitim Pdf Dokümanı:</span>
+            <span class="input-group-text" id="inputGroup-sizing-default">Eğitim Ses Dokümanı:</span>
             
             <input type="file" #soundFile placeholder="Choose file" (change)="uploadFile(soundFile.files)" style="display: none" accept=".mp3"/>
-            <input type="text" class="form-control" placeholder="Dosya yüklenmedi" aria-label="Dosya yüklendikten sonra dosya adı buraya yazılır." value={{UploadedSoundFileName}}>
-            <button class="btn btn-primary mr-2" (click)="soundFile.click()" type="button">Yükle</button>
-            <button class="btn btn-success mr-2" (click)="showSound(LessonId)" type="button">İndir</button>
+            <input type="text" class="form-control" placeholder="Dosya yüklenmedi" aria-label="Dosya yüklendikten sonra dosya adı buraya yazılır." 
+                value={{UploadedSoundFileName}} disabled>
+            <input type="number" #pageNumber (change)="setPageNumber(pageNumber.value)" min="1"class="form-control" placeholder="Sayfa Numarası" minNum aria-label="Ses dosyasının geçerli olduğu sayfa numarasını girin." 
+                value="{{PageNumber}}"  [disabled]="UploadedSoundFileName">
+            <button class="btn btn-primary mr-2" *ngIf="!UploadedSoundFileName" value={{UploadedSoundFileName}} (click)="soundFile.click()" type="button" [disabled]="!PageNumber">Yükle</button>
+            <button class="btn btn-success mr-2" *ngIf="UploadedSoundFileName" (click)="showSound(LessonId)" type="button">İndir</button>
             <button class="btn btn-danger mr-2" (click)="removeComponent()" type="button">Sil</button>
         </div>
     </div>
