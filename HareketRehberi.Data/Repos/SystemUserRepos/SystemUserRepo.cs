@@ -59,7 +59,7 @@ namespace HareketRehberi.Data.Repos.SystemUserRepos
             var userToUpdate = await GetAsync(id);
             if (userToUpdate != null)
             {
-                _context.Remove(userToUpdate);
+                _context.SystemUsers.Remove(userToUpdate);
                 await _context.SaveChangesAsync();
             }
             return userToUpdate;
@@ -72,7 +72,5 @@ namespace HareketRehberi.Data.Repos.SystemUserRepos
             else
                 return await _context.SystemUsers.AnyAsync(q => q.UserName == userName);
         }
-
-        
     }
 }

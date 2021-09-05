@@ -10,5 +10,7 @@ namespace HareketRehberi.Data
         }
 
         public DbSet<SystemUser> SystemUsers { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<LessonPdfFileRelation> LessonPdfFileRelations { get; set; }
     }
 }

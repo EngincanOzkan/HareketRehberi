@@ -46,7 +46,7 @@ namespace HareketRehberiAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            return NotFound(await _systemUserBL.Delete(id));
+            return Ok(await _systemUserBL.Delete(id));
         }
     }
 }

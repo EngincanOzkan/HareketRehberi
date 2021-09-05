@@ -1,0 +1,29 @@
+<form>
+    <div class="container-fluid">
+        <h2 class="form-signin-heading">Eğitim Döküman İşlemleri</h2>
+        <div class="input-group mb-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <span class="upload" *ngIf="PdfFileProgress > 0">
+                            {{PdfFileProgress}}%
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span class="upload" *ngIf="UploadedPdfFileStatus">
+                            {{UploadedPdfFileStatus}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <span class="input-group-text col-sm-2" id="inputGroup-sizing-default">Eğitim Pdf Dokümanı:</span>
+            
+            <input type="file" #pdfFile placeholder="Choose file" (change)="uploadFile(pdfFile.files)" style="display: none" accept="application/pdf"/>
+            <input type="text" class="form-control" placeholder="Dosya yüklenmedi" aria-label="Dosya yüklendikten sonra dosya adı buraya yazılır." value={{UploadedPdfFileName}} disabled>
+            <button class="btn btn-primary mr-2" (click)="pdfFile.click()" type="button">Yükle</button>
+            <button class="btn btn-success mr-2" (click)="showPDF(LessonId)" type="button">İndir</button>
+        </div>
+    </div>
+</form>
