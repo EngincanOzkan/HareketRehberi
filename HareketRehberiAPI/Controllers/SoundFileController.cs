@@ -51,7 +51,7 @@ namespace HareketRehberiAPI.Controllers
         public async Task<LessonSoundFileRelation> Delete(int SoundId)
         {
             var result = await _lessonSoundFileRelationBL.Delete(SoundId);
-            _fileBL.DeleteSoundFile(SoundId);
+            _fileBL.DeleteSoundFile(result);
             return result;
         }
     }
