@@ -1,7 +1,9 @@
 ﻿using HareketRehberi.BL.FileBL;
 using HareketRehberi.BL.LessonSoundFileRelationBL;
+using HareketRehberi.Domain.Consts;
 using HareketRehberi.Domain.Models.Entities;
 using HareketRehberi.Domain.Models.Requests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -28,12 +30,27 @@ namespace HareketRehberiAPI.Controllers
             return result;
         }
 
+        [Authorize(Roles = Role.User + "," + Role.Admin)]
         [HttpGet("download/{SoundId}")]
         public async Task<IActionResult> Download(int SoundId)
         {
             try
             {
                 return await _fileBL.DownloadSoundFile(SoundId);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
+        }
+
+        [Authorize(Roles = Role.User + "," + Role.Admin)]
+        [HttpGet("download/{lessonId}/{pageNumber}")]
+        public async Task<IActionResult> DownloadBlob(int lessonId, int pageNumber)
+        {
+            try
+            {
+                return await _fileBL.DownloadSoundFileByLessonAndPage(lessonId, pageNumber);
             }
             catch (Exception ex)
             {

@@ -25,6 +25,11 @@ namespace HareketRehberi.BL.LessonSoundFileRelationBL
             var relation = await _lessonSoundFileRelationRepo.GetAsync(id);
             return relation;
         }
+        public async Task<LessonSoundFileRelation> Get(int lessonId, int pageNumber)
+        {
+            var relation = await _lessonSoundFileRelationRepo.GetAsync(lessonId, pageNumber);
+            return relation;
+        }
         public async Task<IEnumerable<LessonSoundFileRelation>> GetByLessonId(int lessonId)
         {
             var relation = await _lessonSoundFileRelationRepo.GetByLessonIdAsync(lessonId);

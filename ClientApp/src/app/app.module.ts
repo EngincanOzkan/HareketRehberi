@@ -26,6 +26,7 @@ import { PdfAddDeleteDownloadLessonComponent } from './lesson/pdf-add-delete-dow
 import { SoundAddDeleteDownloadLessonComponent } from './lesson/sound-add-delete-download-lesson/sound-add-delete-download-lesson.component';
 import { UserMainScreenComponent } from './user-main-screen/user-main-screen.component';
 import { UserLessonComponent } from './user-lesson/user-lesson.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -55,6 +56,7 @@ export function tokenGetter() {
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    PdfViewerModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'admin', component: AdminComponent, canActivate: [AdminAuthGuard] },

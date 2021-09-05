@@ -1,1 +1,24 @@
-<p>user-lesson works!</p>
+<h4>{{lessonTitle}}</h4>
+<div style='position: relative; height: 100%; margin:20px; border: 1px solid #ccc;' class="mb-0 mt-0">
+    <pdf-viewer [src]="pdfObject"
+                [autoresize]="true"
+                [show-all]="false"
+                [fit-to-page]="true"
+                [render-text]="false"
+                [(page)]="page"
+    ></pdf-viewer>
+</div>
+<div class="container align-bottom">
+  <div class="row">
+    <div class="col align-middle d-flex justify-content-center">
+      <button class="btn align-self-end" (click)="previousPage()"><i class="bi bi-arrow-left-circle-fill fs-1"></i></button>
+    </div>
+    <div class="col align-middle d-flex justify-content-center">
+      <button class="btn align-self-end" (click)="playAudio()"><i *ngIf="audio.paused" class="bi bi-play-circle-fill fs-1"></i> <i *ngIf="!audio.paused" class="bi bi-pause-circle fs-1"></i></button>
+    </div>
+    <div class="col align-middle d-flex justify-content-center">
+      <button class="btn align-self-end" (click)="nextPage()"><i class="bi bi-arrow-right-circle-fill fs-1"></i></button>
+    </div>
+  </div>
+</div>
+

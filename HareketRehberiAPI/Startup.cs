@@ -47,7 +47,7 @@ namespace HareketRehberiAPI
             {
                 o.AddPolicy("EnableCORS", builder =>
                 {
-                    builder.WithOrigins("https://localhost:4200")
+                    builder.AllowAnyOrigin()//WithOrigins("https://localhost:4200")
                     .AllowAnyHeader()
                     .AllowAnyMethod();
                 });
