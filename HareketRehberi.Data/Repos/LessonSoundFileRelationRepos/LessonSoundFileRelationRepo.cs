@@ -24,6 +24,10 @@ namespace HareketRehberi.Data.Repos.LessonSoundFileRelationRepos
         {
             return await _context.LessonSoundFileRelations.FirstOrDefaultAsync(q => q.Id == id);
         }
+        public async Task<LessonSoundFileRelation> GetAsync(int lessonId, int pageNumber)
+        {
+            return await _context.LessonSoundFileRelations.FirstOrDefaultAsync(q => q.LessonId == lessonId && q.PageNumber == pageNumber);
+        }
 
         public async Task<IEnumerable<LessonSoundFileRelation>> GetByLessonIdAsync(int lessonId)
         {

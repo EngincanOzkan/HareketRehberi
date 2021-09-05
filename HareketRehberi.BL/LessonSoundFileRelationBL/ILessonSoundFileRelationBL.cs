@@ -8,6 +8,7 @@ namespace HareketRehberi.BL.LessonSoundFileRelationBL
     {
         Task<IEnumerable<LessonSoundFileRelation>> GetAll();
         Task<LessonSoundFileRelation> Get(int id);
+        Task<LessonSoundFileRelation> Get(int lessonId, int pageNumber);
         Task<IEnumerable<LessonSoundFileRelation>> GetByLessonId(int lessonId);
         Task<IEnumerable<LessonSoundFileRelation>> GetByPageNumber(int pageNumber, int lessonId);
         Task<LessonSoundFileRelation> Create(LessonSoundFileRelation relation);

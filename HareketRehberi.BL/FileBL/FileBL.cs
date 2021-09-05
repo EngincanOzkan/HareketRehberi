@@ -159,7 +159,15 @@ namespace HareketRehberi.BL.FileBL
             return new PhysicalFileResult(fullPath, "audio/mpeg");
         }
 
-        public async Task DeleteSoundFile(LessonSoundFileRelation file)
+        public async Task<PhysicalFileResult> DownloadSoundFileByLessonAndPage(int lessonId, int pageNumber)
+        {
+            var file = await _lessonSoundFileRelationBL.Get(lessonId, pageNumber);
+            var strFileName = $"{file.FileGuid.ToString()}{FileExtensions.mp3}";
+            var fullPath = Path.Combine(_soundsFolderFull, strFileName);
+            return new PhysicalFileResult(fullPath, "audio/mpeg");
+        }
+
+        public void DeleteSoundFile(LessonSoundFileRelation file)
         {
             var strFileName = $"{file.FileGuid.ToString()}{FileExtensions.mp3}";
             var fullPath = Path.Combine(_soundsFolderFull, strFileName);

@@ -1,7 +1,9 @@
 ﻿
 using HareketRehberi.BL.FileBL;
+using HareketRehberi.Domain.Consts;
 using HareketRehberi.Domain.Models.Entities;
 using HareketRehberi.Domain.Models.Requests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
@@ -34,6 +36,7 @@ namespace HareketRehberiAPI.Controllers
             }
         }
 
+        [Authorize(Roles = Role.User + "," + Role.Admin)]
         [HttpGet("download/{LessonId}")]
         public async Task<IActionResult> Download(int lessonId)
         {

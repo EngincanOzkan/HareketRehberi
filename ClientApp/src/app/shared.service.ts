@@ -53,6 +53,10 @@ export class SharedService {
     return this.http.get<any>(this.APIUrl+"/Lesson");
   }
 
+  getLesson(val: any): Observable<any>{
+    return this.http.get(this.APIUrl+"/Lesson/" + val)
+  }
+
   addLesson(val: any){
     return this.http.post(this.APIUrl+"/Lesson", val, {
       headers: new HttpHeaders({
@@ -81,6 +85,9 @@ export class SharedService {
   downloadLessonPdf(val: any){
     return this.http.get(this.APIUrl +'/PdfFile/download/'+val,  { responseType: 'blob' });
   }
+  downloadLessonPdfUrl(val: any):string{
+    return this.APIUrl +'/PdfFile/download/'+val;
+  }
   lessonPdfFileInfo(val: any): any{
     return this.http.get(this.APIUrl +'/PdfFile/LessonFileInfo/'+val);
   }
@@ -92,6 +99,9 @@ export class SharedService {
   }
   downloadLessonSound(val: any){
     return this.http.get(this.APIUrl +'/SoundFile/download/'+val,  { responseType: 'blob' });
+  }
+  downloadLessonSoundBlob(lessonId: any, pageNumber: any){
+    return this.http.get(this.APIUrl +'/SoundFile/download/'+lessonId+"/"+pageNumber,  { responseType: 'blob' });
   }
   lessonSoundFileInfo(val: any): any{
     return this.http.get(this.APIUrl +'/SoundFile/LessonFileInfo/'+val);
