@@ -12,6 +12,7 @@ export class AddEditLessonComponent implements OnInit {
   public Lesson: any;
   public AddEditPageTitle: string;
   public LessonName: string;
+  public SoundComponentValues: any[] = [];
 
   constructor(
     private shared: SharedService,
@@ -46,5 +47,9 @@ export class AddEditLessonComponent implements OnInit {
         console.log(err);
       });
     }
+  }
+  
+  addComponent() {
+    this.SoundComponentValues.push({value:""});
   }
 }

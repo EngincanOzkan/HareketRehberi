@@ -23,6 +23,7 @@ import { LessonComponent } from './lesson/lesson.component';
 import { AddEditLessonComponent } from './lesson/add-edit-lesson/add-edit-lesson.component';
 import { ShowLessonComponent } from './lesson/show-lesson/show-lesson.component';
 import { PdfAddDeleteDownloadLessonComponent } from './lesson/pdf-add-delete-download-lesson/pdf-add-delete-download-lesson.component';
+import { SoundAddDeleteDownloadLessonComponent } from './lesson/sound-add-delete-download-lesson/sound-add-delete-download-lesson.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -42,7 +43,8 @@ export function tokenGetter() {
     LessonComponent,
     AddEditLessonComponent,
     ShowLessonComponent,
-    PdfAddDeleteDownloadLessonComponent
+    PdfAddDeleteDownloadLessonComponent,
+    SoundAddDeleteDownloadLessonComponent
   ],
   imports: [
     BrowserModule,

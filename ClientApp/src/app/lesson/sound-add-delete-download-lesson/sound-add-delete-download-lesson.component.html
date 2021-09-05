@@ -1,0 +1,29 @@
+<form>
+    <div class="container-fluid">
+        <div class="input-group mb-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <span class="upload" *ngIf="SoundFileProgress > 0">
+                            {{SoundFileProgress}}%
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span class="upload" *ngIf="UploadedSoundFileStatus">
+                            {{UploadedSoundFileStatus}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <span class="input-group-text col-sm-2" id="inputGroup-sizing-default">Eğitim Pdf Dokümanı:</span>
+            
+            <input type="file" #soundFile placeholder="Choose file" (change)="uploadFile(soundFile.files)" style="display: none" accept=".mp3"/>
+            <input type="text" class="form-control" placeholder="Dosya yüklenmedi" aria-label="Dosya yüklendikten sonra dosya adı buraya yazılır." value={{UploadedSoundFileName}}>
+            <button class="btn btn-primary mr-2" (click)="soundFile.click()" type="button">Yükle</button>
+            <button class="btn btn-success mr-2" (click)="showSound(LessonId)" type="button">İndir</button>
+            <button class="btn btn-danger mr-2" (click)="removeComponent()" type="button">Sil</button>
+        </div>
+    </div>
+</form>
