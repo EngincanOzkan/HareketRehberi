@@ -1,0 +1,9 @@
+<div class="list-group" *ngFor="let lesson of LessonList">
+    <a style="cursor: pointer" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" (click)="startLesson(lesson.id)">
+      <div class="ms-2 me-auto fw-bold">
+          {{lesson.lessonName}}
+      </div>
+      <!--<i class="bi bi-emoji-smile fs-1 btn btn-success"></i>-->
+      <i class="bi bi-emoji-frown fs-1 btn btn-danger"></i>
+    </a>
+</div>
