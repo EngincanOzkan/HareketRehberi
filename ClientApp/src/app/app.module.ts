@@ -19,6 +19,10 @@ import { SystemUserComponent } from './system-user/system-user.component';
 import { ShowUserComponent } from './system-user/show-user/show-user.component';
 import { AddEditUserComponent } from './system-user/add-edit-user/add-edit-user.component';
 import { SharedService } from './shared.service';
+import { LessonComponent } from './lesson/lesson.component';
+import { AddEditLessonComponent } from './lesson/add-edit-lesson/add-edit-lesson.component';
+import { ShowLessonComponent } from './lesson/show-lesson/show-lesson.component';
+import { PdfAddDeleteDownloadLessonComponent } from './lesson/pdf-add-delete-download-lesson/pdf-add-delete-download-lesson.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -34,7 +38,11 @@ export function tokenGetter() {
     AdminComponent,
     SystemUserComponent,
     ShowUserComponent,
-    AddEditUserComponent
+    AddEditUserComponent,
+    LessonComponent,
+    AddEditLessonComponent,
+    ShowLessonComponent,
+    PdfAddDeleteDownloadLessonComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +55,9 @@ export function tokenGetter() {
       { path: 'users', component: SystemUserComponent, canActivate: [AdminAuthGuard] },
       { path: 'users/add', component: AddEditUserComponent, canActivate: [AdminAuthGuard] },
       { path: 'users/edit', component: AddEditUserComponent, canActivate: [AdminAuthGuard] },
+      { path: 'lessons', component: LessonComponent, canActivate: [AdminAuthGuard] },
+      { path: 'lessons/add', component: AddEditLessonComponent, canActivate: [AdminAuthGuard] },
+      { path: 'lessons/edit', component: AddEditLessonComponent, canActivate: [AdminAuthGuard] },
       { path: 'login', component: LoginComponent },
       { path: '404', component : NotFoundComponent},
       { path: '', redirectTo: '/home', pathMatch: 'full' },

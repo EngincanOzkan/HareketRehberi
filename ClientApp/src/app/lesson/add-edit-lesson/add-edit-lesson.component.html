@@ -1,0 +1,19 @@
+<form class="form-lesson-add-edit" #LessonForm="ngForm" (ngSubmit)="save(LessonForm)">
+  <div class="container-fluid">
+    <h2 class="form-signin-heading">{{AddEditPageTitle}}</h2>
+    <br/>
+    <div class="input-group mb-3">
+      <span class="input-group-text col-sm-2" id="inputGroup-sizing-default">Eğitim Adı:</span>
+      <input type="text" id="lessonName" name="lessonName" [(ngModel)]="LessonName" class="form-control" placeholder="Eğitim adı giriniz" required autofocus>
+    </div>
+    <div *ngIf="Lesson" class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button class="btn btn-primary" type="submit">Güncelle</button>
+    </div>
+    <div *ngIf="!Lesson" class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button class="btn btn-primary" type="submit">Kaydet</button>
+    </div>
+  </div>
+</form>
+<br />
+
+<app-pdf-add-delete-download-lesson  *ngIf="Lesson" [LessonId]="Lesson.id"></app-pdf-add-delete-download-lesson>

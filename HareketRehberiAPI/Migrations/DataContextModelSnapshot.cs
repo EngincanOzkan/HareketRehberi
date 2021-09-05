@@ -17,6 +17,43 @@ namespace HareketRehberiAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.5");
 
+            modelBuilder.Entity("HareketRehberi.Domain.Models.Entities.Lesson", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("LessonName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Lessons");
+                });
+
+            modelBuilder.Entity("HareketRehberi.Domain.Models.Entities.LessonPdfFileRelation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("FileGuid")
+                        .IsRequired()
+                        .HasColumnType("varbinary(16)");
+
+                    b.Property<string>("FileName")
+                        .HasColumnType("text");
+
+                    b.Property<int>("LessonId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LessonId");
+
+                    b.ToTable("LessonPdfFileRelations");
+                });
+
             modelBuilder.Entity("HareketRehberi.Domain.Models.Entities.SystemUser", b =>
                 {
                     b.Property<int>("Id")
@@ -44,6 +81,17 @@ namespace HareketRehberiAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SystemUsers");
+                });
+
+            modelBuilder.Entity("HareketRehberi.Domain.Models.Entities.LessonPdfFileRelation", b =>
+                {
+                    b.HasOne("HareketRehberi.Domain.Models.Entities.Lesson", "Lesson")
+                        .WithMany()
+                        .HasForeignKey("LessonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Lesson");
                 });
 #pragma warning restore 612, 618
         }
