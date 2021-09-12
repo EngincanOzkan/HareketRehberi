@@ -1,10 +1,12 @@
 using AutoMapper;
+using HareketRehberi.BL.EvaluationBL;
 using HareketRehberi.BL.FileBL;
 using HareketRehberi.BL.LessonBL;
 using HareketRehberi.BL.LessonPdfFileRelationBL;
 using HareketRehberi.BL.LessonSoundFileRelationBL;
 using HareketRehberi.BL.SystemUserBL;
 using HareketRehberi.Data;
+using HareketRehberi.Data.Repos.EvaluationRepos;
 using HareketRehberi.Data.Repos.LessonPdfFileRelationRepos;
 using HareketRehberi.Data.Repos.LessonRepos;
 using HareketRehberi.Data.Repos.LessonSoundFileRelationRepos;
@@ -120,6 +122,8 @@ namespace HareketRehberiAPI
             services.AddTransient<ILessonSoundFileRelationRepo, LessonSoundFileRelationRepo>();
             services.AddTransient<ILessonSoundFileRelationBL, LessonSoundFileRelationBL>();
             services.AddTransient<FileBL>();
+            services.AddTransient<IEvaluationRepo, EvaluationRepo>();
+            services.AddTransient<IEvaluationBL, EvaluationBL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

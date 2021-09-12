@@ -27,6 +27,9 @@ import { SoundAddDeleteDownloadLessonComponent } from './lesson/sound-add-delete
 import { UserMainScreenComponent } from './user-main-screen/user-main-screen.component';
 import { UserLessonComponent } from './user-lesson/user-lesson.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { EvaluationComponent } from './evaluation/evaluation.component';
+import { AddEditEvaluationComponent } from './evaluation/add-edit-evaluation/add-edit-evaluation.component';
+import { ShowEvaluationsComponent } from './evaluation/show-evaluations/show-evaluations.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -49,7 +52,10 @@ export function tokenGetter() {
     PdfAddDeleteDownloadLessonComponent,
     SoundAddDeleteDownloadLessonComponent,
     UserMainScreenComponent,
-    UserLessonComponent
+    UserLessonComponent,
+    EvaluationComponent,
+    AddEditEvaluationComponent,
+    ShowEvaluationsComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +73,9 @@ export function tokenGetter() {
       { path: 'lessons/add', component: AddEditLessonComponent, canActivate: [AdminAuthGuard] },
       { path: 'lessons/edit', component: AddEditLessonComponent, canActivate: [AdminAuthGuard] },
       { path: 'my', component: UserMainScreenComponent, canActivate: [AuthGuard] },
+      { path: 'evaluations', component: EvaluationComponent, canActivate: [AdminAuthGuard] },
+      { path: 'evaluations/add', component: AddEditEvaluationComponent, canActivate: [AdminAuthGuard] },
+      { path: 'evaluations/edit/:id', component: AddEditEvaluationComponent, canActivate: [AdminAuthGuard] },
       { path: 'lesson', component: UserLessonComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },
       { path: '404', component : NotFoundComponent},

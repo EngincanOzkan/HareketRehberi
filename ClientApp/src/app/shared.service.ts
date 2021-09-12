@@ -111,4 +111,33 @@ export class SharedService {
   }
   ///END SOUND FILE OPERATIONS
 
+  ///START EVALUATION
+  getEvaluationList(): Observable<any[]> {
+    return this.http.get<any>(this.APIUrl+"/Evaluation");
+  }
+
+  getEvaluation(val: any): Observable<any>{
+    return this.http.get(this.APIUrl+"/Evaluation/" + val)
+  }
+
+  addEvaluation(val: any){
+    return this.http.post(this.APIUrl+"/Evaluation", val, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  updateEvaluation(val: any){
+    return this.http.patch(this.APIUrl+"/Evaluation", val, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  deleteEvaluation(val: any){
+    return this.http.delete(this.APIUrl+"/Evaluation/"+val);
+  }
+  ///END EVALUATION
 }

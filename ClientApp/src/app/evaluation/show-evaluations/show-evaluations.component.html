@@ -1,0 +1,47 @@
+<div class="float-right">
+    <button type="button" class="btn btn-primary" (click)="addClick()">
+        Yeni Eğitim Tanımla
+    </button>
+</div> <br/>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Değerlendime Id</th>
+            <th>Değerlendirme Adı</th>
+            <th>Anket mi?</th>
+            <th>Seçenekler</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let evaluation of evaluationList">
+            <td>{{evaluation.id}}</td>
+            <td>{{evaluation.evaluationName}}</td>
+            <td>{{evaluation.isSurvey}}</td>
+            <td>
+                <button type="button" class="btn btn-light mt-1" (click)="editClick(evaluation)">
+                    Düzenle
+                </button>
+                <button type="button" class="btn btn-light mt-1" data-bs-toggle="modal" data-bs-target="#removeModal" (click)="removeClick(evaluation.id)">
+                    Sil
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div id="removeModal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Silmek istediğinizden emin misiniz?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Değelendirmeyi sildiğinizde değerlendirme ile alakalı tüm veriler silinecektir.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="removeApproveClick()">Tamam(Sil)</button>
+        </div>
+      </div>
+    </div>
+</div>

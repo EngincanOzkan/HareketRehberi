@@ -1,0 +1,20 @@
+<form class="form-lesson-add-edit" #evalutionForm="ngForm" (ngSubmit)="save(evalutionForm)">
+    <div class="container-fluid">
+      <h2 class="form-signin-heading">{{addEditPageTitle}}</h2>
+      <br/>
+      <div class="input-group mb-3">
+        <span class="input-group-text col-sm-2" id="inputGroup-sizing-default">Değerlendirme Adı:</span>
+        <input type="text" id="evaluationName" name="evaluationName" [(ngModel)]="evaluationName" class="form-control" placeholder="Değerlendirme adı giriniz" required autofocus>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input col-sm-2" [(ngModel)]="isSurvey" id="isSurvey" name="isSurvey">
+        <label class="form-check-label" for="isSurvey"> Anket mi?</label>
+      </div>
+      <div *ngIf="evaluation" class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary" type="submit">Güncelle</button>
+      </div>
+      <div *ngIf="!evaluation" class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary" type="submit">Kaydet</button>
+      </div>
+    </div>
+</form>
