@@ -54,6 +54,7 @@ namespace HareketRehberi.BL.LessonBL
             {
                 Id = (int)lessonRequest.Id,
                 LessonName = lessonRequest.LessonName,
+                ProgressiveRelaxationExercise = lessonRequest.ProgressiveRelaxationExercise
             };
 
             var userUpdated = await _lessonRepo.UpdateAsync(lesson);

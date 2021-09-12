@@ -6,6 +6,10 @@
       <span class="input-group-text col-sm-2" id="inputGroup-sizing-default">Eğitim Adı:</span>
       <input type="text" id="lessonName" name="lessonName" [(ngModel)]="LessonName" class="form-control" placeholder="Eğitim adı giriniz" required autofocus>
     </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input col-sm-2" [(ngModel)]="ProgressiveRelaxationExercise" id="ProgressiveRelaxationExercise" name="ProgressiveRelaxationExercise">
+      <label class="form-check-label" for="ProgressiveRelaxationExercise"> Progresif egzersiz mi?</label>
+    </div>
     <div *ngIf="Lesson" class="d-grid gap-2 d-md-flex justify-content-md-end">
       <button class="btn btn-primary" type="submit">Güncelle</button>
     </div>
