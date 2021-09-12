@@ -37,6 +37,7 @@ namespace HareketRehberi.Data.Repos.LessonRepos
             if (lessonToUpdate != null)
             {
                 lessonToUpdate.LessonName = lesson.LessonName;
+                lessonToUpdate.ProgressiveRelaxationExercise = lesson.ProgressiveRelaxationExercise;
                 _context.Lessons.Update(lessonToUpdate);
                 await _context.SaveChangesAsync();
             }

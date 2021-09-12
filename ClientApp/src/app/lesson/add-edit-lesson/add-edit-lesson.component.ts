@@ -13,6 +13,7 @@ export class AddEditLessonComponent implements OnInit {
   public Lesson: any;
   public AddEditPageTitle: string;
   public LessonName: string;
+  public ProgressiveRelaxationExercise: boolean;
   public SoundComponentValues: SoundFile[] = [];
 
   constructor(
@@ -22,6 +23,7 @@ export class AddEditLessonComponent implements OnInit {
     this.AddEditPageTitle = shared.AddLessonTitle;
     this.Lesson = shared.Lesson;
     if(this.Lesson && this.Lesson.lessonName) this.LessonName = this.Lesson.lessonName;
+    if(this.Lesson && this.Lesson.progressiveRelaxationExercise) this.ProgressiveRelaxationExercise = this.Lesson.progressiveRelaxationExercise;
   }
 
   ngOnInit(): void {

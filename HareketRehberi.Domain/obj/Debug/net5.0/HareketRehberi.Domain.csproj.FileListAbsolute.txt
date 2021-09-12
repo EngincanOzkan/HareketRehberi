@@ -9,3 +9,4 @@ C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\obj\Debug\ne
 C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\obj\Debug\net5.0\HareketRehberi.Domain.dll
 C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\obj\Debug\net5.0\ref\HareketRehberi.Domain.dll
 C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\obj\Debug\net5.0\HareketRehberi.Domain.pdb
+C:\Users\Engincan\source\repos\HareketRehberi\HareketRehberi.Domain\obj\Debug\net5.0\HareketRehberi.Domain.csproj.AssemblyReference.cache
