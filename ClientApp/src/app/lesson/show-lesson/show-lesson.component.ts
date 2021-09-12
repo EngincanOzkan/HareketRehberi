@@ -44,7 +44,7 @@ export class ShowLessonComponent implements OnInit {
 
   public removeApproveClick(): void{
     this.service.deleteLesson(this.SelectedLessonIdForRemove).subscribe(response => {
-      this.router.navigate(["/lessons"]);
+      window.location.reload();
     }, err => {
       console.log(err);
     });

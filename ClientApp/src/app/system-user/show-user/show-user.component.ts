@@ -43,8 +43,8 @@ export class ShowUserComponent implements OnInit {
   }
 
   public removeApproveClick(): void{
-    this.service.deleteSystemUser(this.SelectedUserIdForRemove).subscribe(response => {
-      this.router.navigate(["/users"]);
+    this.service.deleteSystemUser(this.SelectedUserIdForRemove).subscribe(() => {
+      window.location.reload();
     }, err => {
       console.log(err);
     });

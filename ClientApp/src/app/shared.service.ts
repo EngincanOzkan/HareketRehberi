@@ -43,7 +43,7 @@ export class SharedService {
     });
   }
 
-  deleteSystemUser(val: any){
+  deleteSystemUser(val: any) {
     return this.http.delete(this.APIUrl+"/SystemUser/"+val);
   }
   ///END SYSTEMUSER
