@@ -22,10 +22,11 @@ namespace HareketRehberi.BL.LessonBL
             var lesson = new Lesson
             {
                 LessonName = lessonRequest.LessonName,
+                ProgressiveRelaxationExercise = lessonRequest.ProgressiveRelaxationExercise
             };
 
-            var userCrearted = await _lessonRepo.CreateAsync(lesson);
-            return userCrearted;
+            var lessonCrearted = await _lessonRepo.CreateAsync(lesson);
+            return lessonCrearted;
         }
 
         public async Task<Lesson> Delete(int id)
@@ -57,8 +58,8 @@ namespace HareketRehberi.BL.LessonBL
                 ProgressiveRelaxationExercise = lessonRequest.ProgressiveRelaxationExercise
             };
 
-            var userUpdated = await _lessonRepo.UpdateAsync(lesson);
-            return userUpdated;
+            var lessonUpdated = await _lessonRepo.UpdateAsync(lesson);
+            return lessonUpdated;
         }
         private async Task<bool> IsLessonExists(string lessonName, int? id)
         {
