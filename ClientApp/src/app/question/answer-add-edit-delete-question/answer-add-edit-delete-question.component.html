@@ -1,0 +1,27 @@
+<form #answerForm="ngForm" (ngSubmit)="save(answerForm)">
+    <div class="container-fluid">
+        <div class="input-group mb-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <span class="upload" *ngIf="operationStatus">
+                            {{operationStatus}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <span class="input-group-text" id="inputGroup-sizing-default">Cevap:</span>
+            
+            <input type="text" class="form-control"  [(ngModel)]="answerText" name="answerText" id="answerText" placeholder="Cevap" aria-label="Cevap seçeneğinin içeriğini giriniz." 
+                value={{answerText}}>
+            <div class="col-1 form-control form-check" *ngIf="!isSurvey" style="margin-bottom: 0px; padding-left:35px">
+                <input type="checkbox" class="form-check-input" [(ngModel)]="isRightAnswer" name="isRightAnswer" id="isRightAnswer" placeholder="Doğru seçenek mi?" aria-label="Cevap seçeneği doğru bilgiyi içeriyor ise işaretleyin" 
+                value={{isRightAnswer}}>
+                Doğru seçenek mi?
+            </div>
+            <button class="btn btn-primary mr-2" *ngIf="!answerId"  type="submit" >Kaydet</button>
+            <button class="btn btn-success mr-2" *ngIf="answerId" type="submit">Güncelle</button>
+            <button class="btn btn-danger mr-2" (click)="removeComponent()" type="button">Sil</button>
+        </div>
+    </div>
+</form>

@@ -30,7 +30,6 @@ export class PdfAddDeleteDownloadLessonComponent implements OnInit {
   }
 
   public uploadFile(files: any) {
-    debugger;
     if (files.length === 0) return;
 
     let fileToUpload = <File>files[0];

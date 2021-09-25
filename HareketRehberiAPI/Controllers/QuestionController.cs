@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HareketRehberi.BL.AnswerBL;
 using HareketRehberi.BL.QuestionBL;
 using HareketRehberi.Domain.Consts;
 using HareketRehberi.Domain.Models.Entities;
@@ -14,10 +15,12 @@ namespace HareketRehberiAPI.Controllers
     public class QuestionController : ControllerBase
     {
         private readonly IQuestionBL _questionBL;
+        private readonly IAnswerBL _answerBL;
         private readonly IMapper _mapper;
 
-        public QuestionController(IQuestionBL questionBL, IMapper mapper) {
+        public QuestionController(IQuestionBL questionBL, IAnswerBL answerBL, IMapper mapper) {
             _questionBL = questionBL;
+            _answerBL = answerBL;
             _mapper = mapper;
         }
 
@@ -58,6 +61,13 @@ namespace HareketRehberiAPI.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             return Ok(await _questionBL.Delete(id));
+        }
+
+        [HttpGet("{questionId}/answers")]
+        [Authorize(Roles = Role.User + "," + Role.Admin)]
+        public async Task<IActionResult> GetAnswersByQuestionId(int questionId)
+        {
+            return Ok(await _answerBL.GetByQuestionId(questionId));
         }
     }
 }

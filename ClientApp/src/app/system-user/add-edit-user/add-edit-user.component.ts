@@ -37,7 +37,6 @@ export class AddEditUserComponent implements OnInit {
 
   save(form: NgForm) {
     this.checkPasswordsAreSame();
-    debugger;
     if(!this.SystemUser)
     {
       if(!this.PasswordsNotDone)

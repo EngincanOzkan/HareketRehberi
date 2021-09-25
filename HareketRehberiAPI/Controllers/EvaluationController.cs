@@ -58,7 +58,7 @@ namespace HareketRehberiAPI.Controllers
 
         [HttpGet("{evaluationId}/questions")]
         [Authorize(Roles = Role.User + "," + Role.Admin)]
-        public async Task<IActionResult> GetByEvaluationId(int evaluationId)
+        public async Task<IActionResult> GetQuestionsByEvaluationId(int evaluationId)
         {
             return Ok(await _questionBL.GetByEvaluationId(evaluationId));
         }

@@ -33,6 +33,7 @@ import { ShowEvaluationsComponent } from './evaluation/show-evaluations/show-eva
 import { QuestionComponent } from './question/question.component';
 import { AddEditQuestionComponent } from './question/add-edit-question/add-edit-question.component';
 import { ShowQuestionsComponent } from './question/show-questions/show-questions.component';
+import { AnswerAddEditDeleteQuestionComponent } from './question/answer-add-edit-delete-question/answer-add-edit-delete-question.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -61,7 +62,8 @@ export function tokenGetter() {
     ShowEvaluationsComponent,
     QuestionComponent,
     AddEditQuestionComponent,
-    ShowQuestionsComponent
+    ShowQuestionsComponent,
+    AnswerAddEditDeleteQuestionComponent
   ],
   imports: [
     BrowserModule,

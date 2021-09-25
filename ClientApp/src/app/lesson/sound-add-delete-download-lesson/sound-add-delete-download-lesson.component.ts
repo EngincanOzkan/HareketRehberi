@@ -49,7 +49,6 @@ export class SoundAddDeleteDownloadLessonComponent implements OnInit {
 
   public uploadFile(files: any) {
     if (files.length === 0) return;
-    debugger;
     let fileToUpload = <File>files[0];
     const formData = new FormData();
     formData.append("file", fileToUpload, fileToUpload.name);

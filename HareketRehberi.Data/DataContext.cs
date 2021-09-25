@@ -15,5 +15,6 @@ namespace HareketRehberi.Data
         public DbSet<LessonSoundFileRelation> LessonSoundFileRelations { get; set; }
         public DbSet<Evaluation> Evaluations { get; set; }
         public DbSet<Question> Questions { get; set; }
+        public DbSet<Answer> Answers { get; set; }
     }
 }

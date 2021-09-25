@@ -15,3 +15,19 @@
       </div>
     </div>
 </form>
+<br />
+
+<div class="container-fluid" *ngIf="questionForm">
+  <div *ngFor="let value of AnswerEditComponentValues; let i = index">
+    <app-answer-add-edit-delete-question 
+      [(AnswerEditComponentValues)]="AnswerEditComponentValues" 
+      Index="{{i}}"
+      [QuestionId]="question.id"
+      [Answer]="value"
+    >
+    </app-answer-add-edit-delete-question>
+  </div>
+  <div class="d-grid gap-2">
+    <button class="btn btn-success" type="submit" (click)="addComponent()">Yeni Cevap Ekle</button>
+  </div>
+</div>

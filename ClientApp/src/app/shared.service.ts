@@ -174,4 +174,38 @@ export class SharedService {
     return this.http.delete(this.APIUrl+"/Question/"+val);
   }
   ///END QUESTION
+
+  ///START ANSWER
+  getAnswerList(): Observable<any[]> {
+    return this.http.get<any>(this.APIUrl+"/Answer");
+  }
+
+  getQuestionAnswerList(val: any): Observable<any[]> {
+    return this.http.get<any>(this.APIUrl+"/Question/"+val+"/Answers");
+  }
+
+  getAnswer(val: any): Observable<any>{
+    return this.http.get(this.APIUrl+"/Answer/" + val)
+  }
+
+  addAnswer(val: any): Observable<any>{
+    return this.http.post<any>(this.APIUrl+"/Answer", val, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  updateAnswer(val: any):  Observable<any>{
+    return this.http.patch<any>(this.APIUrl+"/Answer", val, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  deleteAnswer(val: any){
+    return this.http.delete(this.APIUrl+"/Answer/"+val);
+  }
+  ///END ANSWER
 }

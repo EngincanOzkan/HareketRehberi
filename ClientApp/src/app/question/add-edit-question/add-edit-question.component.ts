@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AnswerModel } from 'src/app/Models/AnswerModel';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class AddEditQuestionComponent implements OnInit {
   public evaluationId: any;
   public questionText: string;
   public question: any;
+  public AnswerEditComponentValues: AnswerModel[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -38,6 +40,8 @@ export class AddEditQuestionComponent implements OnInit {
     this.shared.getQuestion(id).subscribe(data => {
       this.question = data;
       if(this.question && this.question.questionText) this.questionText = this.question.questionText;
+
+      this.listAnswers();
     });
   }
 
@@ -64,6 +68,18 @@ export class AddEditQuestionComponent implements OnInit {
         console.log(err);
       });
     }
+  }
+
+  addComponent() {
+    this.AnswerEditComponentValues.push(new AnswerModel());
+  }
+
+  listAnswers() {
+    if(this.question) {
+      this.shared.getQuestionAnswerList(this.question.id).subscribe((data: AnswerModel[]) => {
+        this.AnswerEditComponentValues = data;
+      });
+   }
   }
 
 }

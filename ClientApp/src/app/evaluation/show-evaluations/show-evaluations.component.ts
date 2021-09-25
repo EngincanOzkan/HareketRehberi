@@ -36,7 +36,6 @@ export class ShowEvaluationsComponent implements OnInit {
   }
 
   public getQuestions(id: any) {
-    debugger;
     this.router.navigate((["/evaluations/"+id+"/questions"]));
   }
 

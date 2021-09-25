@@ -16,14 +16,14 @@ namespace HareketRehberi.BL.QuestionBL
 
         public async Task<IEnumerable<Question>> GetAll()
         {
-            var relations = await _questionRepo.GetAllAsync();
-            return relations;
+            var response = await _questionRepo.GetAllAsync();
+            return response;
         }
 
         public async Task<Question> Get(int id)
         {
-            var relation = await _questionRepo.GetAsync(id);
-            return relation;
+            var response = await _questionRepo.GetAsync(id);
+            return response;
         }
         public async Task<IEnumerable<Question>> GetByEvaluationId(int id)
         {
@@ -45,8 +45,8 @@ namespace HareketRehberi.BL.QuestionBL
 
         public async Task<Question> Delete(int id)
         {
-            var deletedRelation = await _questionRepo.DeleteAsync(id);
-            return deletedRelation;
+            var response = await _questionRepo.DeleteAsync(id);
+            return response;
         }
     }
 }
