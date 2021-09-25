@@ -9,6 +9,7 @@ namespace HareketRehberi.Domain
         public MapperProfile()
         {
             CreateMap<SystemUserRequest, SystemUser>();
+            CreateMap<QuestionRequest, Question>();
         }
     }
 }

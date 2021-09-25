@@ -31,8 +31,13 @@ export class ShowEvaluationsComponent implements OnInit {
     this.router.navigate(["/evaluations/add"]);
   }
 
-  public editClick(lesson: any): void{
-    this.router.navigate(["/evaluations/edit/"+lesson.id]);
+  public editClick(evaluation: any): void{
+    this.router.navigate(["/evaluations/edit/"+evaluation.id]);
+  }
+
+  public getQuestions(id: any) {
+    debugger;
+    this.router.navigate((["/evaluations/"+id+"/questions"]));
   }
 
   public removeClick(lessonId: number): void{

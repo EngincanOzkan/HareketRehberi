@@ -30,6 +30,9 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { EvaluationComponent } from './evaluation/evaluation.component';
 import { AddEditEvaluationComponent } from './evaluation/add-edit-evaluation/add-edit-evaluation.component';
 import { ShowEvaluationsComponent } from './evaluation/show-evaluations/show-evaluations.component';
+import { QuestionComponent } from './question/question.component';
+import { AddEditQuestionComponent } from './question/add-edit-question/add-edit-question.component';
+import { ShowQuestionsComponent } from './question/show-questions/show-questions.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -55,7 +58,10 @@ export function tokenGetter() {
     UserLessonComponent,
     EvaluationComponent,
     AddEditEvaluationComponent,
-    ShowEvaluationsComponent
+    ShowEvaluationsComponent,
+    QuestionComponent,
+    AddEditQuestionComponent,
+    ShowQuestionsComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +82,9 @@ export function tokenGetter() {
       { path: 'evaluations', component: EvaluationComponent, canActivate: [AdminAuthGuard] },
       { path: 'evaluations/add', component: AddEditEvaluationComponent, canActivate: [AdminAuthGuard] },
       { path: 'evaluations/edit/:id', component: AddEditEvaluationComponent, canActivate: [AdminAuthGuard] },
+      { path: 'evaluations/:evaluationid/questions', component: QuestionComponent, canActivate: [AdminAuthGuard] },
+      { path: 'evaluations/:evaluationid/questions/add', component: AddEditQuestionComponent, canActivate: [AdminAuthGuard] },
+      { path: 'evaluations/:evaluationid/questions/edit/:id', component: AddEditQuestionComponent, canActivate: [AdminAuthGuard] },
       { path: 'lesson', component: UserLessonComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },
       { path: '404', component : NotFoundComponent},

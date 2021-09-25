@@ -1,11 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace HareketRehberi.Domain.Models.Entities
+﻿namespace HareketRehberi.Domain.Models.Entities
 {
-    public class Evaluation
+    public class Evaluation : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
         public string EvaluationName { get; set; }
         public bool IsSurvey { get; set; }
     }

@@ -1,4 +1,5 @@
 ﻿using HareketRehberi.BL.EvaluationBL;
+using HareketRehberi.BL.QuestionBL;
 using HareketRehberi.Domain.Consts;
 using HareketRehberi.Domain.Models.Requests;
 using Microsoft.AspNetCore.Authorization;
@@ -11,11 +12,13 @@ namespace HareketRehberiAPI.Controllers
     [Route("api/[controller]")]
     public class EvaluationController : ControllerBase
     {
+        private readonly IQuestionBL _questionBL;
         private readonly IEvaluationBL _evaluationBL;
 
-        public EvaluationController(IEvaluationBL evaluationBL)
+        public EvaluationController(IEvaluationBL evaluationBL, IQuestionBL questionBL)
         {
             _evaluationBL = evaluationBL;
+            _questionBL = questionBL;
         }
 
         [HttpGet]
@@ -51,6 +54,13 @@ namespace HareketRehberiAPI.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             return Ok(await _evaluationBL.Delete(id));
+        }
+
+        [HttpGet("{evaluationId}/questions")]
+        [Authorize(Roles = Role.User + "," + Role.Admin)]
+        public async Task<IActionResult> GetByEvaluationId(int evaluationId)
+        {
+            return Ok(await _questionBL.GetByEvaluationId(evaluationId));
         }
     }
 }

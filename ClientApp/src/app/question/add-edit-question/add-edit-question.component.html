@@ -1,0 +1,17 @@
+<form class="form-lesson-add-edit" #questionForm="ngForm" (ngSubmit)="save(questionForm)">
+    <div class="container-fluid">
+      <h2 class="form-signin-heading">{{addEditPageTitle}}</h2>
+      <br/>
+      <div class="input-group mb-3">
+        <span class="input-group-text col-sm-2" id="inputGroup-sizing-default">Soru:</span>
+        <textarea id="questionText" name="questionText" [(ngModel)]="questionText" class="form-control" placeholder="Soru giriniz" required>
+        </textarea>
+      </div>
+      <div *ngIf="question" class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary" type="submit">Güncelle</button>
+      </div>
+      <div *ngIf="!question" class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary" type="submit">Kaydet</button>
+      </div>
+    </div>
+</form>

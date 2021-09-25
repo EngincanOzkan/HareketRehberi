@@ -4,14 +4,9 @@ using System.Threading.Tasks;
 
 namespace HareketRehberi.Data.Repos.SystemUserRepos
 {
-    public interface ISystemUserRepo
+    public interface ISystemUserRepo : IBaseRepo<SystemUser>
     {
-        Task<IEnumerable<SystemUser>> GetAllAsync();
-        Task<SystemUser> GetAsync(int id);
         Task<SystemUser> GetByUserNameAsync(string userName);
-        Task<SystemUser> CreateAsync(SystemUser user);
-        Task<SystemUser> UpdateAsync(SystemUser user);
-        Task<SystemUser> DeleteAsync(int id);
         Task<bool> AnyAsync(string userName, int? id);
     }
 }

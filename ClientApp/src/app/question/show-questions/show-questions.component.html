@@ -1,31 +1,26 @@
 <div class="float-right">
     <button type="button" class="btn btn-primary" (click)="addClick()">
-        Yeni Değerlendirme Tanımla
+        Yeni Soru Tanımla
     </button>
 </div> <br/>
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Değerlendime Id</th>
-            <th>Değerlendirme Adı</th>
-            <th>Anket mi?</th>
-            <th>Seçenekler</th>
+            <th style="width: 10%;">Soru Id</th>
+            <th style="width: 70%;">Soru Adı</th>
+            <th style="width: 20%;">Seçenekler</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let evaluation of evaluationList">
-            <td>{{evaluation.id}}</td>
-            <td>{{evaluation.evaluationName}}</td>
-            <td>{{evaluation.isSurvey}}</td>
+        <tr *ngFor="let question of questionList">
+            <td>{{question.id}}</td>
+            <td>{{question.questionText}}</td>
             <td>
-                <button type="button" class="btn btn-light mt-1" (click)="editClick(evaluation)">
+                <button type="button" class="btn btn-light mt-1" (click)="editClick(question)">
                     Düzenle
                 </button>
-                <button type="button" class="btn btn-light mt-1" data-bs-toggle="modal" data-bs-target="#removeModal" (click)="removeClick(evaluation.id)">
+                <button type="button" class="btn btn-light mt-1" data-bs-toggle="modal" data-bs-target="#removeModal" (click)="removeClick(question.id)">
                     Sil
-                </button>
-                <button type="button" class="btn btn-warning mt-1" (click)="getQuestions(evaluation.id)">
-                    Sorular
                 </button>
             </td>
         </tr>
@@ -39,7 +34,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p>Değelendirmeyi sildiğinizde değerlendirme ile alakalı tüm veriler silinecektir.</p>
+          <p>Soruyu sildiğinizde soru ile alakalı tüm veriler silinecektir.</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
