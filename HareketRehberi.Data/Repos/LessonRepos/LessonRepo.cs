@@ -1,6 +1,7 @@
 ﻿using HareketRehberi.Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace HareketRehberi.Data.Repos.LessonRepos
@@ -20,6 +21,11 @@ namespace HareketRehberi.Data.Repos.LessonRepos
                 return await _context.Lessons.AnyAsync(q => q.LessonName == lessonName && q.Id != id);
             else
                 return await _context.Lessons.AnyAsync(q => q.LessonName == lessonName);
+        }
+
+        public async Task<IEnumerable<Lesson>> GetUserLessons(int userId) {
+            var matches = await _context.LessonUserMatches.Where(q => q.UserId == userId).Select(q => q.LessonId).ToListAsync();
+            return await _context.Lessons.Where(q => matches.Contains(q.Id)).ToListAsync();
         }
     }
 }

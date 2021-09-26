@@ -38,6 +38,9 @@ import { LessonEvaluationMatchComponent } from './lesson-evaluation-match/lesson
 import { ShowCheckMatchComponent } from './lesson-evaluation-match/show-check-match/show-check-match.component';
 import { LessonUserMatchComponent } from './lesson-user-match/lesson-user-match.component';
 import { UserShowCheckMatchLessonComponent } from './lesson-user-match/user-show-check-match-lesson/user-show-check-match-lesson.component';
+import { EndOfLessonComponent } from './user-lesson/end-of-lesson/end-of-lesson.component';
+import { GoEvaluationComponent } from './user-lesson/go-evaluation/go-evaluation.component';
+import { StartLessonComponent } from './user-lesson/start-lesson/start-lesson.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -71,7 +74,10 @@ export function tokenGetter() {
     LessonEvaluationMatchComponent,
     ShowCheckMatchComponent,
     LessonUserMatchComponent,
-    UserShowCheckMatchLessonComponent
+    UserShowCheckMatchLessonComponent,
+    EndOfLessonComponent,
+    GoEvaluationComponent,
+    StartLessonComponent
   ],
   imports: [
     BrowserModule,

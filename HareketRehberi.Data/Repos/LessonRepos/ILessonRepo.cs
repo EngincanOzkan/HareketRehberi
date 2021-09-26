@@ -7,5 +7,6 @@ namespace HareketRehberi.Data.Repos.LessonRepos
     public interface ILessonRepo : IBaseRepo<Lesson>
     {
         Task<bool> AnyAsync(string lessonName, int? id);
+        Task<IEnumerable<Lesson>> GetUserLessons(int userId);
     }
 }

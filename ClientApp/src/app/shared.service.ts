@@ -57,6 +57,10 @@ export class SharedService {
     return this.http.get(this.APIUrl+"/Lesson/" + val)
   }
 
+  getUsersLessons(val: any): Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl+"/Lesson/GetUsersLessons/" + val)
+  }
+
   addLesson(val: any){
     return this.http.post(this.APIUrl+"/Lesson", val, {
       headers: new HttpHeaders({
@@ -288,4 +292,75 @@ export class SharedService {
     return this.http.delete(this.APIUrl+"/LessonUserMatch/DeleteLessonsUserMatches/"+val);
   }
   ///END LESSONUSER
+
+  ///START USERLESSONPROGRESSLOG
+  getUserLessonProgressLogList(): Observable<any[]> {
+    return this.http.get<any>(this.APIUrl+"/UserLessonProgressLog");
+  }
+
+  getUserLessonProgressLog(val: any): Observable<any>{
+    return this.http.get(this.APIUrl+"/UserLessonProgressLog/" + val)
+  }
+
+  addUserLessonProgressLog(val: any): Observable<any>{
+    return this.http.post<any>(this.APIUrl+"/UserLessonProgressLog", val, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  updateUserLessonProgressLog(val: any):  Observable<any>{
+    return this.http.patch<any>(this.APIUrl+"/UserLessonProgressLog", val, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  deleteUserLessonProgressLog(val: any){
+    return this.http.delete(this.APIUrl+"/UserLessonProgressLog/"+val);
+  }
+
+  userLessonProgressLogCreateStartLog(val: any): Observable<any>{
+    return this.http.post<any>(this.APIUrl+"/UserLessonProgressLog/CreateStartLog", val, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  userLessonProgressLogCreateEndLog(val: any): Observable<any>{
+    return this.http.post<any>(this.APIUrl+"/UserLessonProgressLog/CreateEndLog", val, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  getUserLessonLastStartLog(userId: any, lessonId:any): Observable<any>{
+    return this.http.get(this.APIUrl+"/UserLessonProgressLog/GetUserLessonLastStartLog/" + userId + "/" + lessonId)
+  }
+
+  getUserLessonLastEndLog(userId: any, lessonId:any): Observable<any>{
+    return this.http.get(this.APIUrl+"/UserLessonProgressLog/GetUserLessonLastEndLog/" + userId + "/" + lessonId)
+  }
+
+  getUserLessonEndLogByGuid(guid: any): Observable<any>{
+    return this.http.get(this.APIUrl+"/UserLessonProgressLog/getUserLessonEndLogByGuid/" + guid)
+  }
+
+  getUserLessonStartLogByGuid(guid: any): Observable<any>{
+    return this.http.get(this.APIUrl+"/UserLessonProgressLog/GetUserLessonStartLogByGuid/" + guid)
+  }
+
+  getUserLessonStartLogs(userId: any, lessonId:any): Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl+"/UserLessonProgressLog/GetUserLessonStartLogs/" + userId + "/" + lessonId)
+  }
+
+  getUserLessonEndLogs(userId: any, lessonId:any): Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl+"/UserLessonProgressLog/GetUserLessonEndLogs/" + userId + "/" + lessonId)
+  }
+
+  ///END USERLESSONPROGRESSLOG
 }

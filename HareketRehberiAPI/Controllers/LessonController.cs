@@ -27,6 +27,13 @@ namespace HareketRehberiAPI.Controllers
             return Ok(await _lessonBL.GetAll());
         }
 
+        [HttpGet("GetUsersLessons/{id}")]
+        [Authorize(Roles = Role.User + "," + Role.Admin)]
+        public async Task<IActionResult> GetUsersLessons(int id)
+        {
+            return Ok(await _lessonBL.GetUserLessons(id));
+        }
+
         [HttpGet("{id}")]
         [Authorize(Roles = Role.User + "," + Role.Admin)]
         public async Task<IActionResult> Get(int id)

@@ -8,18 +8,21 @@ import { SharedService } from '../shared.service';
   styleUrls: ['./user-main-screen.component.css']
 })
 export class UserMainScreenComponent implements OnInit {
+  public userId: any;
   public LessonList: any[];
+
   constructor(
     public shared: SharedService,
     public router: Router
   ) { }
 
   ngOnInit(): void {
+    this.userId = localStorage.getItem('userId');
     this.fillLessons();
   }
 
   fillLessons() {
-    this.shared.getLessonList().subscribe(data => {
+    this.shared.getUsersLessons(this.userId).subscribe(data => {
       this.LessonList = data;
     }) 
   }

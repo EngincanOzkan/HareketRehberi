@@ -41,6 +41,12 @@ namespace HareketRehberi.BL.LessonBL
             return lesson;
         }
 
+        public async Task<IEnumerable<Lesson>> GetUserLessons(int userId)
+        {
+            var lesson = await _lessonRepo.GetUserLessons(userId);
+            return lesson;
+        }
+
         public async Task<IEnumerable<Lesson>> GetAll()
         {
             var lesson = await _lessonRepo.GetAllAsync();
@@ -61,6 +67,7 @@ namespace HareketRehberi.BL.LessonBL
             var lessonUpdated = await _lessonRepo.UpdateAsync(lesson);
             return lessonUpdated;
         }
+
         private async Task<bool> IsLessonExists(string lessonName, int? id)
         {
             return await _lessonRepo.AnyAsync(lessonName, id);

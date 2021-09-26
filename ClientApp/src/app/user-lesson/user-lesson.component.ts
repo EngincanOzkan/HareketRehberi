@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from '../shared.service';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { PDFDocumentProxy, PdfViewerModule } from 'ng2-pdf-viewer';
 
 @Component({
   selector: 'app-user-lesson',
@@ -17,6 +17,13 @@ export class UserLessonComponent implements OnInit {
   public blob: any;
   public soundDownloadUrl: any;
   public audio = new Audio();
+  public totalPages: number;
+  public endLesson: boolean = false;
+  public goEvaluation: boolean = false;
+  public startLesson: boolean = false;
+  public evaluation: any;
+  public operationIdentifier: any; //guid
+  public userId: any;
 
   public pdfObject = {
     url: 'some url to PDF',
@@ -37,6 +44,7 @@ export class UserLessonComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userId = localStorage.getItem("userId");
     this.getLesson();
     this.showSound(this.lessonId);
   }
@@ -44,12 +52,29 @@ export class UserLessonComponent implements OnInit {
   getLesson() {
     this.shared.getLesson(this.lessonId).subscribe(data => {
       this.lessonTitle = data.lessonName;
+      this.getLessonEvaluation();
+    })
+  }
+
+  getLessonEvaluation() {
+    this.shared.getLessonsEvaluationsByLessonId(this.lessonId).subscribe(data => {
+      this.evaluation = data;
     })
   }
 
   nextPage() {
+    debugger;
+    if(this.page < this.totalPages)
+    {
       this.page++;
       this.showSound(this.lessonId);
+    }else if(this.page >= this.totalPages && !this.evaluation)
+    {
+      this.endLesson = true;
+    }else if(this.page >= this.totalPages && this.evaluation)
+    {
+      this.goEvaluation = true;
+    }
   }
 
   playAudio(){
@@ -79,5 +104,9 @@ export class UserLessonComponent implements OnInit {
       this.page--;
     }
     this.showSound(this.lessonId);
+  }
+
+  callBackFn(pdf: PDFDocumentProxy){
+    this.totalPages = pdf.numPages;
   }
 }
