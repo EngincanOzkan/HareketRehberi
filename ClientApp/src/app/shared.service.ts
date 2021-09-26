@@ -246,4 +246,46 @@ export class SharedService {
     return this.http.delete(this.APIUrl+"/LessonEvaluationMatch/DeleteLessonsEvaluation/"+val);
   }
   ///END LESSONEVALUATION
+
+  ///START LESSONUSER
+  getLessonUserMatchList(): Observable<any[]> {
+    return this.http.get<any>(this.APIUrl+"/LessonUserMatch");
+  }
+
+  getLessonUserMatch(val: any): Observable<any>{
+    return this.http.get(this.APIUrl+"/LessonUserMatch/" + val)
+  }
+
+  getLessonUserMatchByLessonId(val: any): Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl+"/LessonUserMatch/GetByLessonId/"+val)
+  }
+
+  getLessonUserMatchByUserId(val: any): Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl+"/LessonUserMatch/GetByUserId/"+val)
+  }
+
+  addLessonUserMatch(val: any){
+    return this.http.post(this.APIUrl+"/LessonUserMatch", val, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  updateLessonUserMatch(val: any){
+    return this.http.patch(this.APIUrl+"/LessonUserMatch", val, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  deleteLessonUserMatch(val: any){
+    return this.http.delete(this.APIUrl+"/LessonUserMatch/"+val);
+  }
+
+  deleteLessonUserMatchByLessonId(val: any){
+    return this.http.delete(this.APIUrl+"/LessonUserMatch/DeleteLessonsUserMatches/"+val);
+  }
+  ///END LESSONUSER
 }

@@ -6,6 +6,7 @@ using HareketRehberi.BL.LessonBL;
 using HareketRehberi.BL.LessonEvaluationMatchBL;
 using HareketRehberi.BL.LessonPdfFileRelationBL;
 using HareketRehberi.BL.LessonSoundFileRelationBL;
+using HareketRehberi.BL.LessonUserMatchBL;
 using HareketRehberi.BL.QuestionBL;
 using HareketRehberi.BL.SystemUserBL;
 using HareketRehberi.Data;
@@ -15,6 +16,7 @@ using HareketRehberi.Data.Repos.LessonEvaluationMatchRepos;
 using HareketRehberi.Data.Repos.LessonPdfFileRelationRepos;
 using HareketRehberi.Data.Repos.LessonRepos;
 using HareketRehberi.Data.Repos.LessonSoundFileRelationRepos;
+using HareketRehberi.Data.Repos.LessonUserMatchRepos;
 using HareketRehberi.Data.Repos.QuestionRepos;
 using HareketRehberi.Data.Repos.SystemUserRepos;
 using HareketRehberi.Domain;
@@ -136,6 +138,8 @@ namespace HareketRehberiAPI
             services.AddTransient<IAnswerBL, AnswerBL>();
             services.AddTransient<ILessonEvaluationMatchRepo, LessonEvaluationMatchRepo>();
             services.AddTransient<ILessonEvaluationMatchBL, LessonEvaluationMatchBL>();
+            services.AddTransient<ILessonUserMatchRepo, LessonUserMatchRepo>();
+            services.AddTransient<ILessonUserMatchBL, LessonUserMatchBL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

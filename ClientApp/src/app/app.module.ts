@@ -36,6 +36,8 @@ import { ShowQuestionsComponent } from './question/show-questions/show-questions
 import { AnswerAddEditDeleteQuestionComponent } from './question/answer-add-edit-delete-question/answer-add-edit-delete-question.component';
 import { LessonEvaluationMatchComponent } from './lesson-evaluation-match/lesson-evaluation-match.component';
 import { ShowCheckMatchComponent } from './lesson-evaluation-match/show-check-match/show-check-match.component';
+import { LessonUserMatchComponent } from './lesson-user-match/lesson-user-match.component';
+import { UserShowCheckMatchLessonComponent } from './lesson-user-match/user-show-check-match-lesson/user-show-check-match-lesson.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -67,7 +69,9 @@ export function tokenGetter() {
     ShowQuestionsComponent,
     AnswerAddEditDeleteQuestionComponent,
     LessonEvaluationMatchComponent,
-    ShowCheckMatchComponent
+    ShowCheckMatchComponent,
+    LessonUserMatchComponent,
+    UserShowCheckMatchLessonComponent
   ],
   imports: [
     BrowserModule,
@@ -85,6 +89,7 @@ export function tokenGetter() {
       { path: 'lessons/add', component: AddEditLessonComponent, canActivate: [AdminAuthGuard] },
       { path: 'lessons/edit', component: AddEditLessonComponent, canActivate: [AdminAuthGuard] },
       { path: 'lessons/:lessonid/evaluation/match', component: LessonEvaluationMatchComponent, canActivate: [AdminAuthGuard] },
+      { path: 'lessons/:lessonid/user/match', component: LessonUserMatchComponent, canActivate: [AdminAuthGuard] },
       { path: 'my', component: UserMainScreenComponent, canActivate: [AuthGuard] },
       { path: 'evaluations', component: EvaluationComponent, canActivate: [AdminAuthGuard] },
       { path: 'evaluations/add', component: AddEditEvaluationComponent, canActivate: [AdminAuthGuard] },
