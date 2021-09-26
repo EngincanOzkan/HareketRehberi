@@ -1,4 +1,5 @@
-﻿using HareketRehberi.BL.LessonBL;
+﻿using HareketRehberi.BL.EvaluationBL;
+using HareketRehberi.BL.LessonBL;
 using HareketRehberi.Domain.Consts;
 using HareketRehberi.Domain.Models.Requests;
 using Microsoft.AspNetCore.Authorization;
@@ -12,10 +13,12 @@ namespace HareketRehberiAPI.Controllers
     public class LessonController : ControllerBase
     {
         private readonly ILessonBL _lessonBL;
+        private readonly IEvaluationBL _evaluationBL;
 
-        public LessonController(ILessonBL lessonBL)
+        public LessonController(ILessonBL lessonBL, IEvaluationBL evaluationBL)
         {
             _lessonBL = lessonBL;
+            _evaluationBL = evaluationBL;
         }
 
         [HttpGet]
@@ -50,6 +53,13 @@ namespace HareketRehberiAPI.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             return Ok(await _lessonBL.Delete(id));
+        }
+
+        [HttpGet("{lessonId}/evaluations")]
+        [Authorize(Roles = Role.User + "," + Role.Admin)]
+        public async Task<IActionResult> GetEvaluationsByLessonId(int lessonId)
+        {
+            return Ok(await _evaluationBL.GetEvaluationsByLessonId(lessonId));
         }
     }
 }

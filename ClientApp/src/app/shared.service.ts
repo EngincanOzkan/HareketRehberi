@@ -208,4 +208,42 @@ export class SharedService {
     return this.http.delete(this.APIUrl+"/Answer/"+val);
   }
   ///END ANSWER
+
+  ///START LESSONEVALUATION
+  getLessonEvaluationList(): Observable<any[]> {
+    return this.http.get<any>(this.APIUrl+"/LessonEvaluationMatch");
+  }
+
+  getLessonEvaluation(val: any): Observable<any>{
+    return this.http.get(this.APIUrl+"/LessonEvaluationMatch/" + val)
+  }
+
+  getLessonsEvaluationsByLessonId(val: any): Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl+"/Lesson/"+val+"/evaluations")
+  }
+
+  addLessonEvaluation(val: any){
+    return this.http.post(this.APIUrl+"/LessonEvaluationMatch", val, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  updateLessonEvaluation(val: any){
+    return this.http.patch(this.APIUrl+"/LessonEvaluationMatch", val, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  deleteLessonEvaluation(val: any){
+    return this.http.delete(this.APIUrl+"/LessonEvaluationMatch/"+val);
+  }
+
+  deleteLessonsEvaluation(val: any){
+    return this.http.delete(this.APIUrl+"/LessonEvaluationMatch/DeleteLessonsEvaluation/"+val);
+  }
+  ///END LESSONEVALUATION
 }

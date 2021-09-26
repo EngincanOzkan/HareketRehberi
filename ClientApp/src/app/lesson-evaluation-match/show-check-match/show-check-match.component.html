@@ -1,0 +1,34 @@
+<div class="float-right">
+   <strong>Eğitim: </strong>{{lessonName}}<br /><br />
+   <button type="button" class="btn btn-primary mb-3" (click)="save()">
+        Seçilen Değerlendirmeyi Onayla
+   </button>
+   <br >
+   <button type="button" class="btn btn-danger mb-3" (click)="deleteMatch()">
+        Bu eğitimdeki değerlendirmeyi kaldır!
+   </button>
+</div> <br/>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Değerlendime Id</th>
+            <th>Değerlendirme Adı</th>
+            <th>Anket mi?</th>
+            <th>Değerlendirme Eğitime atandı mı?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let evaluation of evaluationList; let i = index">
+            <td style="width: 10%">{{evaluation.id}}</td>
+            <td style="width: 70%">{{evaluation.evaluationName}}</td>
+            <td style="width: 10%">{{evaluation.isSurvey}}</td>
+            <td style="width: 10%">
+              <div class="row">
+                <div class="col text-center">
+                    <input type="radio" class="form-check-input" name="matches" [(ngModel)]="selectedEvaluationId" [value]="evaluation.id">
+                </div>
+              </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

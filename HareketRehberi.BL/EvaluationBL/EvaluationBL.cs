@@ -61,9 +61,17 @@ namespace HareketRehberi.BL.EvaluationBL
             var evaluationUpdated = await _evaluationRepo.UpdateAsync(evaluation);
             return evaluationUpdated;
         }
+
         private async Task<bool> IsEvaluationExists(string evaluationName, int? id)
         {
             return await _evaluationRepo.AnyAsync(evaluationName, id);
         }
+
+        public async Task<IEnumerable<Evaluation>> GetEvaluationsByLessonId(int lessonId)
+        {
+            var response = await _evaluationRepo.GetEvaluationsByLessonId(lessonId);
+            return response;
+        }
+
     }
 }

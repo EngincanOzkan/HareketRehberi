@@ -12,5 +12,6 @@ namespace HareketRehberi.BL.EvaluationBL
         Task<Evaluation> Create(EvaluationRequest evaluationRequest);
         Task<Evaluation> Update(EvaluationRequest evaluationRequest);
         Task<Evaluation> Delete(int id);
+        Task<IEnumerable<Evaluation>> GetEvaluationsByLessonId(int lessonId);
     }
 }

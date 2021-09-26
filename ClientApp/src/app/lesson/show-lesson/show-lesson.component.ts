@@ -42,6 +42,11 @@ export class ShowLessonComponent implements OnInit {
     this.SelectedLessonIdForRemove = lessonId;
   }
 
+  public selectEvaluationClick(lessonId: number): void{
+    debugger;
+    this.router.navigate(["/lessons/"+lessonId+"/evaluation/match"]);
+  }
+
   public removeApproveClick(): void{
     this.service.deleteLesson(this.SelectedLessonIdForRemove).subscribe(response => {
       window.location.reload();
