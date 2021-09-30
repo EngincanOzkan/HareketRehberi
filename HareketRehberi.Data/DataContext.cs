@@ -19,5 +19,6 @@ namespace HareketRehberi.Data
         public DbSet<LessonEvaluationMatch> LessonEvaluationMatches { get; set; }
         public DbSet<LessonUserMatch> LessonUserMatches { get; set; }
         public DbSet<UserLessonProgressLog> UserLessonProgressLogs { get; set; }
+        public DbSet<UserLessonsEvaluationsQuestionsAnswers> UserLessonsEvaluationsQuestionsAnswersTable { get; set; }
     }
 }

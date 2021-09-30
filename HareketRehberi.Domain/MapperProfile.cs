@@ -14,6 +14,7 @@ namespace HareketRehberi.Domain
             CreateMap<LessonEvaluationMatchRequest, LessonEvaluationMatch>();
             CreateMap<LessonUserMatchRequest, LessonUserMatch>();
             CreateMap<UserLessonProgressLogRequest, UserLessonProgressLog>();
+            CreateMap<UserLessonsEvaluationsQuestionsAnswers, UserLessonsEvaluationsQuestionsAnswersRequest>();
         }
     }
 }

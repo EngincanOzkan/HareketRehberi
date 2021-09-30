@@ -10,6 +10,7 @@ using HareketRehberi.BL.LessonUserMatchBL;
 using HareketRehberi.BL.QuestionBL;
 using HareketRehberi.BL.SystemUserBL;
 using HareketRehberi.BL.UserLessonProgressLogBL;
+using HareketRehberi.BL.UserLessonsEvaluationsQuestionsAnswersBL;
 using HareketRehberi.Data;
 using HareketRehberi.Data.Repos.AnswerRepos;
 using HareketRehberi.Data.Repos.EvaluationRepos;
@@ -21,6 +22,7 @@ using HareketRehberi.Data.Repos.LessonUserMatchRepos;
 using HareketRehberi.Data.Repos.QuestionRepos;
 using HareketRehberi.Data.Repos.SystemUserRepos;
 using HareketRehberi.Data.Repos.UserLessonProgressLogRepos;
+using HareketRehberi.Data.Repos.UserLessonsEvaluationsQuestionsAnswersRepos;
 using HareketRehberi.Domain;
 using HareketRehberi.Domain.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -144,6 +146,8 @@ namespace HareketRehberiAPI
             services.AddTransient<ILessonUserMatchBL, LessonUserMatchBL>();
             services.AddTransient<IUserLessonProgressLogRepo, UserLessonProgressLogRepo>();
             services.AddTransient<IUserLessonProgressLogBL, UserLessonProgressLogBL>();
+            services.AddTransient<IUserLessonsEvaluationsQuestionsAnswersRepo, UserLessonsEvaluationsQuestionsAnswersRepo>();
+            services.AddTransient<IUserLessonsEvaluationsQuestionsAnswersBL, UserLessonsEvaluationsQuestionsAnswersBL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

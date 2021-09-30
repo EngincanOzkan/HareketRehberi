@@ -363,4 +363,50 @@ export class SharedService {
   }
 
   ///END USERLESSONPROGRESSLOG
+
+  ///START UserLessonsEvaluationsQuestionsAnswers
+  getLEQAList(): Observable<any[]> {
+    return this.http.get<any>(this.APIUrl+"/UserLessonsEvaluationsQuestionsAnswers");
+  }
+
+  getLEQA(val: any): Observable<any>{
+    return this.http.get(this.APIUrl+"/UserLessonsEvaluationsQuestionsAnswers/" + val)
+  }
+
+  addLEQA(val: any): Observable<any>{
+    return this.http.post<any>(this.APIUrl+"/UserLessonsEvaluationsQuestionsAnswers", val, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  updateLEQA(val: any):  Observable<any>{
+    return this.http.patch<any>(this.APIUrl+"/UserLessonsEvaluationsQuestionsAnswers", val, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  updateEvaluationAnswer(leqaId: any, answerId: any):  Observable<any>{
+    return this.http.patch<any>(this.APIUrl+"/UserLessonsEvaluationsQuestionsAnswers/UpdateAnswer/"+leqaId+"/"+answerId, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  startEvaluation(val: any): Observable<any>{
+    return this.http.post<any>(this.APIUrl+"/UserLessonsEvaluationsQuestionsAnswers/StartEvaluation", val, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  deleteLEQA(val: any){
+    return this.http.delete(this.APIUrl+"/UserLessonsEvaluationsQuestionsAnswers/"+val);
+  }
+  ///END UserLessonsEvaluationsQuestionsAnswers
 }

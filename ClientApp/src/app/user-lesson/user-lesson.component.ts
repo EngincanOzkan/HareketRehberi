@@ -21,6 +21,7 @@ export class UserLessonComponent implements OnInit {
   public endLesson: boolean = false;
   public goEvaluation: boolean = false;
   public startLesson: boolean = false;
+  public startEvaluation: boolean = false;
   public evaluation: any;
   public operationIdentifier: any; //guid
   public userId: any;
@@ -58,7 +59,7 @@ export class UserLessonComponent implements OnInit {
 
   getLessonEvaluation() {
     this.shared.getLessonsEvaluationsByLessonId(this.lessonId).subscribe(data => {
-      this.evaluation = data;
+      this.evaluation = data[0];
     })
   }
 
