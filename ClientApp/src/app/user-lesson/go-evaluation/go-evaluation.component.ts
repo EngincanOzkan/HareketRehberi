@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
@@ -18,14 +18,17 @@ export class GoEvaluationComponent implements OnInit {
   @Output() startEvaluationChange = new EventEmitter();
   @Input() operationIdentifier: any;
   
+  public endText: string = "";
   public userId: any;
   public questionIndex: number = 0;
   public questionData: any;
   public questionAnswers: number[] = [];
   public selectedAnswer: any;
+  public evaluationEnd: boolean;
 
   constructor(
     public route: ActivatedRoute,
+    public router: Router,
     public shared: SharedService
   ) { }
 
@@ -55,9 +58,23 @@ export class GoEvaluationComponent implements OnInit {
   }
 
   goNext() {
-    if(this.questionIndex < this.questionData.length){
+    console.log(this.questionIndex)
+    if(this.questionIndex < this.questionData.length-1){
       this.questionIndex++;
       this.selectedAnswer = this.questionAnswers[this.questionIndex];
+      if(this.questionIndex == this.questionData.length-1)
+      {
+        this.endText = "Bitir";
+      }
+    }else if(this.questionIndex >= this.questionData.length-1) {
+      var data = {
+        UserId: this.userId,
+        lessonId: this.lessonId,
+        operationIdentifier: this.operationIdentifier,
+      }
+      this.shared.userLessonProgressLogCreateEndLog(data).subscribe(response => {
+        this.evaluationEnd = true;
+      });
     }
   }
 
@@ -65,6 +82,7 @@ export class GoEvaluationComponent implements OnInit {
     if(this.questionIndex > 0){
       this.questionIndex--;
       this.selectedAnswer = this.questionAnswers[this.questionIndex];
+      this.endText = "";
     }
   }
 }

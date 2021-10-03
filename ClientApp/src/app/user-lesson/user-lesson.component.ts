@@ -64,7 +64,6 @@ export class UserLessonComponent implements OnInit {
   }
 
   nextPage() {
-    debugger;
     if(this.page < this.totalPages)
     {
       this.page++;

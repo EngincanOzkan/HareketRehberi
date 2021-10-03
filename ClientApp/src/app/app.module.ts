@@ -41,6 +41,15 @@ import { UserShowCheckMatchLessonComponent } from './lesson-user-match/user-show
 import { EndOfLessonComponent } from './user-lesson/end-of-lesson/end-of-lesson.component';
 import { GoEvaluationComponent } from './user-lesson/go-evaluation/go-evaluation.component';
 import { StartLessonComponent } from './user-lesson/start-lesson/start-lesson.component';
+import dayjs from 'dayjs';
+
+import { CalendarDateFormatter,
+  CalendarModule,
+  CalendarMomentDateFormatter,
+  DateAdapter,
+  MOMENT
+} from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -115,9 +124,22 @@ export function tokenGetter() {
         allowedDomains: ['localhost:5001'],
         disallowedRoutes: []
       }
-    })
+    }),
+    CalendarModule.forRoot(
+      {
+        provide: DateAdapter,
+        useFactory: adapterFactory,
+      },
+      {
+        dateFormatter: {
+          provide: CalendarDateFormatter,
+          useClass: CalendarMomentDateFormatter,
+        },
+      }
+    ),
   ],
-  providers: [AuthGuard, AdminAuthGuard, SharedService],
+  providers: [AuthGuard, AdminAuthGuard, SharedService, { provide: MOMENT, useValue: dayjs },],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

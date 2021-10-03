@@ -1,26 +1,26 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { CalendarEvent, CalendarView } from 'angular-calendar';
+import dayjs from 'dayjs';
+import tr from 'dayjs/locale/tr';
+
+dayjs.locale(tr);
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
 
-  exampleData: any;
+
+export class HomeComponent implements OnInit {
   
-  constructor(
-    private http: HttpClient
-  ) { }
+  viewDate: Date = new Date();
+
+  constructor() {
+  }
 
   ngOnInit(): void {
-    this.http.get("https://localhost:5001/api/weatherforecast").subscribe(response => {
-      this.exampleData = response;
-      console.log(this.exampleData);
-    }, err => {
-      console.log(err);
-    })
+    
   }
 
 }
