@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationsService } from 'angular2-notifications';
 import { EvaluationComponent } from 'src/app/evaluation/evaluation.component';
 import { AnswerModel } from 'src/app/Models/AnswerModel';
 import { SharedService } from 'src/app/shared.service';
@@ -32,6 +33,7 @@ export class AnswerAddEditDeleteQuestionComponent implements OnInit {
     public shared: SharedService,
     private route: ActivatedRoute,
     private router: Router,
+    private _notifications: NotificationsService
   ) { }
 
   ngOnInit(): void {
@@ -64,7 +66,7 @@ export class AnswerAddEditDeleteQuestionComponent implements OnInit {
         this.answerText = response.answerText;
         this.isSurvey = response.isSurvey;
         this.isRightAnswer = response.isRightAnswer;
-        alert("Kaydetme işlemi başarıyla tamamlandı");
+        this._notifications.success("Başarılı", "Kaydetme işlemi başarıyla tamamlandı", {timeOut:2000})
         this.router.navigate(["/evaluations/"+this.evaluationId+"/questions/edit/"+this.QuestionId]);
       }, err => {
         console.log(err);
@@ -80,7 +82,7 @@ export class AnswerAddEditDeleteQuestionComponent implements OnInit {
         this.answerText = response.answerText;
         this.isSurvey = response.isSurvey;
         this.isRightAnswer = response.isRightAnswer;
-        alert("Güncelleme işlemi başarıyla tamamlandı");
+        this._notifications.success("Başarılı", "Güncelleme işlemi başarıyla tamamlandı", {timeOut:2000})
         this.router.navigate(["/evaluations/"+this.evaluationId+"/questions/edit/"+this.QuestionId]);
       }, err => {
         console.log(err);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationsService } from 'angular2-notifications';
 import { SoundFile } from 'src/app/Models/SoundFileModel';
 import { SharedService } from 'src/app/shared.service';
 
@@ -19,6 +20,7 @@ export class AddEditLessonComponent implements OnInit {
   constructor(
     private shared: SharedService,
     private router: Router,
+    private _notifications: NotificationsService
   ) { 
     this.AddEditPageTitle = shared.AddLessonTitle;
     this.Lesson = shared.Lesson;
@@ -35,7 +37,7 @@ export class AddEditLessonComponent implements OnInit {
     {
       const credentials = JSON.stringify(form.value);
       this.shared.addLesson(credentials).subscribe(response => {
-        alert("Kaydetme işlemi başarıyla tamamlandı");
+        this._notifications.success("Başarılı", "Kaydetme işlemi başarıyla tamamlandı", {timeOut:2000})
         this.router.navigate(["/lessons"]);
       }, err => {
         console.log(err);
@@ -45,7 +47,7 @@ export class AddEditLessonComponent implements OnInit {
       form.value.id = this.Lesson.id;
       var credentials = JSON.stringify(form.value);
       this.shared.updateLesson(credentials).subscribe(response => {
-        alert("Güncelleme işlemi başarıyla tamamlandı");
+        this._notifications.success("Başarılı", "Güncelleme işlemi başarıyla tamamlandı", {timeOut:2000})
         this.router.navigate(["/lessons"]);
       }, err => {
         console.log(err);

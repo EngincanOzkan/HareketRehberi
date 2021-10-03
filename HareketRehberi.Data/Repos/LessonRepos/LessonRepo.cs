@@ -25,7 +25,13 @@ namespace HareketRehberi.Data.Repos.LessonRepos
 
         public async Task<IEnumerable<Lesson>> GetUserLessons(int userId) {
             var matches = await _context.LessonUserMatches.Where(q => q.UserId == userId).Select(q => q.LessonId).ToListAsync();
-            return await _context.Lessons.Where(q => matches.Contains(q.Id)).ToListAsync();
+            return await _context.Lessons.Where(q => matches.Contains(q.Id) && q.ProgressiveRelaxationExercise == false).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Lesson>> GetUsersProgressiveRelaxationExercises(int userId)
+        {
+            var matches = await _context.LessonUserMatches.Where(q => q.UserId == userId).Select(q => q.LessonId).ToListAsync();
+            return await _context.Lessons.Where(q => matches.Contains(q.Id) && q.ProgressiveRelaxationExercise == true).ToListAsync();
         }
     }
 }

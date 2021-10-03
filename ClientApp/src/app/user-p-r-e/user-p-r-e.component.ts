@@ -1,13 +1,15 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
 
 @Component({
-  selector: 'app-user-main-screen',
-  templateUrl: './user-main-screen.component.html',
-  styleUrls: ['./user-main-screen.component.css']
+  selector: 'app-user-p-r-e',
+  templateUrl: './user-p-r-e.component.html',
+  styleUrls: ['./user-p-r-e.component.css']
 })
-export class UserMainScreenComponent implements OnInit {
+export class UserPREComponent implements OnInit {
+
   public userId: any;
   public LessonList: any[];
 
@@ -22,8 +24,8 @@ export class UserMainScreenComponent implements OnInit {
   }
 
   fillLessons() {
-    this.shared.getUsersLessons(this.userId).subscribe(data => {
-      this.shared.getUserLessonLogsGeneral(this.userId).subscribe(response => {
+    this.shared.getUsers_p_r_e(this.userId).subscribe(data => {
+      this.shared.getUserLessonLogsToday(this.userId).subscribe(response => {
         let usersProgresses = response.map(a => a.lessonId);
         data.forEach(q => {
           if(usersProgresses.includes(q.id))

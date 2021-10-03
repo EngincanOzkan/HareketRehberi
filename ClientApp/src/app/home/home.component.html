@@ -1,8 +1,42 @@
-<p>Buraya takvim gelecek
-    bu takvimde günlerde progresif gevşeme egzersizi olarak işaretlenen eğitimlerin hangi günlerde yapılıp yapılmadığı
-    görüntülenecek
-</p>
+<div class="content">
+    <p>Buraya takvim gelecek
+        bu takvimde günlerde progresif gevşeme egzersizi olarak işaretlenen eğitimlerin hangi günlerde yapılıp yapılmadığı
+        görüntülenecek
+    </p>
 
-<mwl-calendar-month-view
-   [viewDate]="viewDate">
-</mwl-calendar-month-view>
+    <div>
+        <div class="row">
+          <div
+            class="btn btn-primary col"
+            mwlCalendarPreviousView
+            [view]="view"
+            [(viewDate)]="viewDate"
+          >
+           Geçmiş Ay
+          </div>
+          <div
+            class="btn btn-outline-secondary col"
+            mwlCalendarToday
+            [(viewDate)]="viewDate"
+          >
+            Bugün
+          </div>
+          <div
+            class="btn btn-primary col"
+            [view]="view"
+            mwlCalendarNextView
+            [(viewDate)]="viewDate"
+          >
+            Gelecek Ay
+          </div>
+        </div>
+      </div>
+
+    <mwl-calendar-month-view
+    [viewDate]="viewDate"
+    [weekStartsOn]="1">
+    </mwl-calendar-month-view>
+</div>
+<div>
+    <app-bottom-navbar></app-bottom-navbar>
+</div>

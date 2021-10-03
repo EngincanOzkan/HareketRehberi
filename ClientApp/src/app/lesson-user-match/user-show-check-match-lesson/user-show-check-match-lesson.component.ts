@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SharedService } from 'src/app/shared.service';
 import { DOCUMENT } from '@angular/common';
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
   selector: 'app-user-show-check-match-lesson',
@@ -20,6 +21,7 @@ export class UserShowCheckMatchLessonComponent implements OnInit {
     private route: ActivatedRoute,
     private service: SharedService,
     private router: Router,
+    private _notifications: NotificationsService,
     @Inject(DOCUMENT) private document: Document,
   ) { }
 
@@ -58,7 +60,7 @@ export class UserShowCheckMatchLessonComponent implements OnInit {
         userIds: this.selectedUserIds,
       }
       this.service.addLessonUserMatch(data).subscribe(response => {
-        alert("Kaydetme işlemi başarıyla tamamlandı");
+        this._notifications.success("Başarılı", "Kaydetme işlemi başarıyla tamamlandı", {timeOut:2000})
       }, err => {
         console.log(err);
       });
@@ -67,7 +69,7 @@ export class UserShowCheckMatchLessonComponent implements OnInit {
 
   deleteMatch(){
     this.service.deleteLessonUserMatchByLessonId(this.lessonId).subscribe(response => {
-      alert("Silme işlemi başarıyla tamamlandı");
+      this._notifications.success("Başarılı", "Silme işlemi başarıyla tamamlandı", {timeOut:2000})
       window.location.reload();
     }, err => {
       console.log(err);

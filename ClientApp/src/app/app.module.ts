@@ -12,6 +12,18 @@ import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 
+import dayjs from 'dayjs';
+import { CalendarDateFormatter,
+  CalendarModule,
+  CalendarMomentDateFormatter,
+  DateAdapter,
+  MOMENT
+} from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminAuthGuard } from './guards/admin-auth.guard';
@@ -41,15 +53,8 @@ import { UserShowCheckMatchLessonComponent } from './lesson-user-match/user-show
 import { EndOfLessonComponent } from './user-lesson/end-of-lesson/end-of-lesson.component';
 import { GoEvaluationComponent } from './user-lesson/go-evaluation/go-evaluation.component';
 import { StartLessonComponent } from './user-lesson/start-lesson/start-lesson.component';
-import dayjs from 'dayjs';
-
-import { CalendarDateFormatter,
-  CalendarModule,
-  CalendarMomentDateFormatter,
-  DateAdapter,
-  MOMENT
-} from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { UserPREComponent } from './user-p-r-e/user-p-r-e.component';
+import { BottomNavbarComponent } from './bottom-navbar/bottom-navbar.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -86,7 +91,9 @@ export function tokenGetter() {
     UserShowCheckMatchLessonComponent,
     EndOfLessonComponent,
     GoEvaluationComponent,
-    StartLessonComponent
+    StartLessonComponent,
+    UserPREComponent,
+    BottomNavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -106,6 +113,7 @@ export function tokenGetter() {
       { path: 'lessons/:lessonid/evaluation/match', component: LessonEvaluationMatchComponent, canActivate: [AdminAuthGuard] },
       { path: 'lessons/:lessonid/user/match', component: LessonUserMatchComponent, canActivate: [AdminAuthGuard] },
       { path: 'my', component: UserMainScreenComponent, canActivate: [AuthGuard] },
+      { path: 'mypre', component: UserPREComponent, canActivate: [AuthGuard] },
       { path: 'evaluations', component: EvaluationComponent, canActivate: [AdminAuthGuard] },
       { path: 'evaluations/add', component: AddEditEvaluationComponent, canActivate: [AdminAuthGuard] },
       { path: 'evaluations/edit/:id', component: AddEditEvaluationComponent, canActivate: [AdminAuthGuard] },
@@ -137,6 +145,8 @@ export function tokenGetter() {
         },
       }
     ),
+    SimpleNotificationsModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [AuthGuard, AdminAuthGuard, SharedService, { provide: MOMENT, useValue: dayjs },],
   bootstrap: [AppComponent]

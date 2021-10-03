@@ -25,6 +25,7 @@ export class UserLessonComponent implements OnInit {
   public evaluation: any;
   public operationIdentifier: any; //guid
   public userId: any;
+  public endText: string = "";
 
   public pdfObject = {
     url: 'some url to PDF',
@@ -68,9 +69,20 @@ export class UserLessonComponent implements OnInit {
     {
       this.page++;
       this.showSound(this.lessonId);
+      if(this.page >= this.totalPages-1){
+        this.endText = "Bitir";
+      }
     }else if(this.page >= this.totalPages && !this.evaluation)
     {
-      this.endLesson = true;
+      var data = {
+        UserId: this.userId,
+        lessonId: this.lessonId,
+        operationIdentifier: this.operationIdentifier,
+      }
+      this.shared.userLessonProgressLogCreateEndLog(data).subscribe(response => {
+        this.endLesson = true;
+      });
+
     }else if(this.page >= this.totalPages && this.evaluation)
     {
       this.goEvaluation = true;
@@ -99,6 +111,7 @@ export class UserLessonComponent implements OnInit {
   }
 
   previousPage() {
+    this.endText = "";
     if(this.page > 1)
     {
       this.page--;

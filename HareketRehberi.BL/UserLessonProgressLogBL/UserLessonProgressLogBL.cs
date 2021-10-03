@@ -92,5 +92,17 @@ namespace HareketRehberi.BL.UserLessonProgressLogBL
             var response = await _userLessonProgressLogRepo.GetUserLessonEndLogs(userId, lessonId);
             return response;
         }
+
+        public async Task<IEnumerable<UserLessonProgressLog>> GetUserLessonLogsGeneral(int userId)
+        {
+            var response = await _userLessonProgressLogRepo.GetUserLessonLogsGeneral(userId);
+            return response;
+        }
+
+        public async Task<IEnumerable<UserLessonProgressLog>> GetUserLessonLogsToday(int userId)
+        {
+            var response = await _userLessonProgressLogRepo.GetUserLessonLogsToday(userId);
+            return response;
+        }
     }
 }

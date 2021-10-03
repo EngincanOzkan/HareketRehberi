@@ -8,5 +8,7 @@ namespace HareketRehberi.Data.Repos.LessonRepos
     {
         Task<bool> AnyAsync(string lessonName, int? id);
         Task<IEnumerable<Lesson>> GetUserLessons(int userId);
+        Task<IEnumerable<Lesson>> GetUsersProgressiveRelaxationExercises(int userId);
+        
     }
 }

@@ -19,7 +19,7 @@ export class EndOfLessonComponent implements OnInit {
   }
 
   endLesson() {
-    this.router.navigate(['/my']);
+    this.router.navigate(['/home']);
   }
   
 }

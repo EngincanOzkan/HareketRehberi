@@ -1,8 +1,12 @@
 
 <div *ngIf="!evaluationEnd">
   <div *ngIf="!startEvaluation">
-      <p>{{evaluationName}}</p>
-      <button class="btn btn-success" type="button" (click)="startEvaluationClick()">Değerlendirmeye başlamak için tıklayınız</button>
+    <div class="jumbotron d-flex align-items-center min-vh-100">
+      <div class="container text-center">
+        <p>{{evaluationName}}</p>
+        <button class="btn btn-success" type="button" (click)="startEvaluationClick()">Değerlendirmeye başlamak için tıklayınız</button>
+      </div>
+    </div>
   </div>
   <div *ngIf="startEvaluation">
       <p>{{questionData[questionIndex].questionText}}</p>

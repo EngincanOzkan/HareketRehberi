@@ -14,7 +14,11 @@ navbar-dark bg-dark">
             <li *ngIf="!isUserAdmin && isUserAuthenticated" class="nav-item">
               <a class="nav-link" aria-current="page" [routerLink]="['/my']" routerLinkActive="active" 
               [routerLinkActiveOptions]="{exact: true}">Eğitimlerim</a>
-          </li>
+            </li>
+            <li *ngIf="!isUserAdmin && isUserAuthenticated" class="nav-item">
+              <a class="nav-link" aria-current="page" [routerLink]="['/mypre']" routerLinkActive="active" 
+              [routerLinkActiveOptions]="{exact: true}">Progresif Gevşeme Egzersizlerim</a>
+            </li>
             <li *ngIf="isUserAdmin" class="nav-item">
               <a class="nav-link" aria-current="page" [routerLink]="['/admin']" routerLinkActive="active" 
               [routerLinkActiveOptions]="{exact: true}">Admin</a>

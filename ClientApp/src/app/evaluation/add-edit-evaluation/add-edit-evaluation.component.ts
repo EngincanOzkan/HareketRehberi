@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationsService } from 'angular2-notifications';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class AddEditEvaluationComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private shared: SharedService
+    private shared: SharedService,
+    private _notifications: NotificationsService
   ) { }
 
   ngOnInit(): void {
@@ -46,7 +48,7 @@ export class AddEditEvaluationComponent implements OnInit {
     {
       const credentials = JSON.stringify(form.value);
       this.shared.addEvaluation(credentials).subscribe(response => {
-        alert("Kaydetme işlemi başarıyla tamamlandı");
+        this._notifications.success("Başarılı", "Kaydetme işlemi başarıyla tamamlandı", {timeOut:2000})
         this.router.navigate(["/evaluations"]);
       }, err => {
         console.log(err);
@@ -56,7 +58,7 @@ export class AddEditEvaluationComponent implements OnInit {
       form.value.id = this.evaluation.id;
       var credentials = JSON.stringify(form.value);
       this.shared.updateEvaluation(credentials).subscribe(response => {
-        alert("Güncelleme işlemi başarıyla tamamlandı");
+        this._notifications.success("Başarılı", "Güncelleme işlemi başarıyla tamamlandı", {timeOut:2000})
         this.router.navigate(["/evaluations"]);
       }, err => {
         console.log(err);

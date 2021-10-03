@@ -1,9 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { CalendarEvent, CalendarView } from 'angular-calendar';
+import { CalendarView, DAYS_OF_WEEK  } from 'angular-calendar';
 import dayjs from 'dayjs';
 import tr from 'dayjs/locale/tr';
 
-dayjs.locale(tr);
+
 
 @Component({
   selector: 'app-home',
@@ -14,13 +14,15 @@ dayjs.locale(tr);
 
 export class HomeComponent implements OnInit {
   
+  view: CalendarView = CalendarView.Month;
+
   viewDate: Date = new Date();
 
   constructor() {
+    dayjs.locale(tr);
   }
 
   ngOnInit(): void {
     
   }
-
 }

@@ -63,5 +63,15 @@ namespace HareketRehberi.Data.Repos.UserLessonProgressLogRepos
         {
             return await _context.UserLessonProgressLogs.Where(q => q.UserId == userId && q.LessonId == lessonId && q.IsStart == false).ToListAsync();
         }
+
+        public async Task<IEnumerable<UserLessonProgressLog>> GetUserLessonLogsGeneral(int userId)
+        {
+            return await _context.UserLessonProgressLogs.Where(q => q.UserId == userId && q.IsStart == false).ToListAsync();
+        }
+
+        public async Task<IEnumerable<UserLessonProgressLog>> GetUserLessonLogsToday(int userId)
+        {
+            return await _context.UserLessonProgressLogs.Where(q => q.UserId == userId && q.IsStart == false && q.OperationTime.Date == DateTime.Today).ToListAsync();
+        }
     }
 }

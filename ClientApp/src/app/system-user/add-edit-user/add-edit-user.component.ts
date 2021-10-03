@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationsService, NotificationType } from 'angular2-notifications';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
@@ -23,6 +24,7 @@ export class AddEditUserComponent implements OnInit {
   constructor(
     private shared: SharedService,
     private router: Router,
+    private _notifications: NotificationsService
   ) { 
     this.AddEditPageTitle = shared.AddSystemUsertitle;
     this.SystemUser = shared.SystemUser;
@@ -43,7 +45,7 @@ export class AddEditUserComponent implements OnInit {
       {
         const credentials = JSON.stringify(form.value);
         this.shared.addSystemUser(credentials).subscribe(response => {
-          alert("Kaydetme işlemi başarıyla tamamlandı");
+          this._notifications.success("Başarılı", "Kaydetme işlemi başarıyla tamamlandı", {timeOut:2000})
           this.router.navigate(["/users"]);
         }, err => {
           console.log(err);
@@ -56,7 +58,7 @@ export class AddEditUserComponent implements OnInit {
         form.value.id = this.SystemUser.id;
         var credentials = JSON.stringify(form.value);
         this.shared.updateSystemUser(credentials).subscribe(response => {
-          alert("Güncelleme işlemi başarıyla tamamlandı");
+          this._notifications.success("Başarılı", "Güncelleme işlemi başarıyla tamamlandı", {timeOut:2000})
           this.router.navigate(["/users"]);
         }, err => {
           console.log(err);

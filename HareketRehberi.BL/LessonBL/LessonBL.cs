@@ -47,6 +47,13 @@ namespace HareketRehberi.BL.LessonBL
             return lesson;
         }
 
+        public async Task<IEnumerable<Lesson>> GetUsersProgressiveRelaxationExercises(int userId)
+        {
+            var lesson = await _lessonRepo.GetUsersProgressiveRelaxationExercises(userId);
+            return lesson;
+        }
+        
+
         public async Task<IEnumerable<Lesson>> GetAll()
         {
             var lesson = await _lessonRepo.GetAllAsync();

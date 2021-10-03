@@ -61,6 +61,10 @@ export class SharedService {
     return this.http.get<any[]>(this.APIUrl+"/Lesson/GetUsersLessons/" + val)
   }
 
+  getUsers_p_r_e(val: any): Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl+"/Lesson/GetUsersProgressiveRelaxationExercises/" + val)
+  }
+
   addLesson(val: any){
     return this.http.post(this.APIUrl+"/Lesson", val, {
       headers: new HttpHeaders({
@@ -360,6 +364,14 @@ export class SharedService {
 
   getUserLessonEndLogs(userId: any, lessonId:any): Observable<any[]>{
     return this.http.get<any[]>(this.APIUrl+"/UserLessonProgressLog/GetUserLessonEndLogs/" + userId + "/" + lessonId)
+  }
+
+  getUserLessonLogsGeneral(userId: any): Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl+"/UserLessonProgressLog/GetUserLessonLogsGeneral/" + userId)
+  }
+
+  getUserLessonLogsToday(userId: any): Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl+"/UserLessonProgressLog/GetUserLessonLogsToday/" + userId)
   }
 
   ///END USERLESSONPROGRESSLOG

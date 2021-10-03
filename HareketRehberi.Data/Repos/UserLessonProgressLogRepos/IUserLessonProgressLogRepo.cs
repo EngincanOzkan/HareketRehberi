@@ -15,5 +15,7 @@ namespace HareketRehberi.Data.Repos.UserLessonProgressLogRepos
         Task<UserLessonProgressLog> GetUserLessonStartLogByGuid(Guid operationIdentifier);
         Task<IEnumerable<UserLessonProgressLog>> GetUserLessonStartLogs(int userId, int lessonId);
         Task<IEnumerable<UserLessonProgressLog>> GetUserLessonEndLogs(int userId, int lessonId);
+        Task<IEnumerable<UserLessonProgressLog>> GetUserLessonLogsGeneral(int userId);
+        Task<IEnumerable<UserLessonProgressLog>> GetUserLessonLogsToday(int userId);
     }
 }
