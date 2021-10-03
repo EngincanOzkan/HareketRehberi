@@ -56,6 +56,8 @@ import { StartLessonComponent } from './user-lesson/start-lesson/start-lesson.co
 import { UserPREComponent } from './user-p-r-e/user-p-r-e.component';
 import { BottomNavbarComponent } from './bottom-navbar/bottom-navbar.component';
 
+
+
 export function tokenGetter() {
   return localStorage.getItem('jwt');
 }

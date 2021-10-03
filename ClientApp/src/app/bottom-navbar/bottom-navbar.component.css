@@ -19,6 +19,14 @@
     text-decoration: none;
     font-size: 17px;
   }
+
+  .radiusLeft {
+    border-radius: 10px 0px 0px 10px;
+  }
+
+  .radiusRight {
+    border-radius: 0px 10px 10px 0px;
+  }
   
   .navbar a:hover {
     background: #f1f1f1;

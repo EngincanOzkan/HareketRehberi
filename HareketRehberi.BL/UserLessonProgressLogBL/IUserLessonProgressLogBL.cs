@@ -22,5 +22,7 @@ namespace HareketRehberi.BL.UserLessonProgressLogBL
         Task<IEnumerable<UserLessonProgressLog>> GetUserLessonEndLogs(int userId, int lessonId);
         Task<IEnumerable<UserLessonProgressLog>> GetUserLessonLogsGeneral(int userId);
         Task<IEnumerable<UserLessonProgressLog>> GetUserLessonLogsToday(int userId);
+        Task<IEnumerable<object>> GetUserLessonLogsGeneralPre(int userId);
+        
     }
 }

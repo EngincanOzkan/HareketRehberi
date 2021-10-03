@@ -40,7 +40,6 @@ export class AnswerAddEditDeleteQuestionComponent implements OnInit {
     this.answerId = this.Answer.id
     this.answerText = this.Answer.answerText;
     this.isSurvey = this.Answer.isSurvey;
-    debugger;
     this.isRightAnswer = this.Answer.isRightAnswer;
     this.evaluationId = this.route.snapshot.paramMap.get('evaluationid');
     this.getIsSurveyInfo(this.evaluationId);
@@ -49,7 +48,6 @@ export class AnswerAddEditDeleteQuestionComponent implements OnInit {
   getIsSurveyInfo(id: any) {
     this.shared.getEvaluation(id).subscribe(data => {
       this.evaluation = data;
-      debugger;
       this.isSurvey = data.isSurvey;
     });
   }

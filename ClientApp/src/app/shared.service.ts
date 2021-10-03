@@ -370,10 +370,14 @@ export class SharedService {
     return this.http.get<any[]>(this.APIUrl+"/UserLessonProgressLog/GetUserLessonLogsGeneral/" + userId)
   }
 
+  
   getUserLessonLogsToday(userId: any): Observable<any[]>{
     return this.http.get<any[]>(this.APIUrl+"/UserLessonProgressLog/GetUserLessonLogsToday/" + userId)
   }
-
+  
+  getUserLessonLogsGeneralPre(userId: any): Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl+"/UserLessonProgressLog/getUserLessonLogsGeneralPre/" + userId)
+  }
   ///END USERLESSONPROGRESSLOG
 
   ///START UserLessonsEvaluationsQuestionsAnswers

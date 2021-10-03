@@ -43,9 +43,7 @@ export class UserShowCheckMatchLessonComponent implements OnInit {
     });
     this.service.getLessonUserMatchByLessonId(this.lessonId).subscribe(respose => {
       this.lessonUsers = respose;
-      debugger;
       this.lessonUsers.forEach(lessonUser => {
-        debugger;
         var input = this.document.getElementById("user_"+lessonUser.userId) as HTMLInputElement;
         input.checked = true;
       })
@@ -78,15 +76,12 @@ export class UserShowCheckMatchLessonComponent implements OnInit {
 
   onChangeCheckbox(userId: any, event:any) {
     if(event.target.checked){
-      debugger;
       this.selectedUserIds.push(userId);
     }else {
-      debugger;
       const index = this.selectedUserIds.indexOf(userId);
       if(index > -1) {
         this.selectedUserIds.splice(index, 1);
       }
-      debugger;
     }
   }
 

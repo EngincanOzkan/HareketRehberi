@@ -104,5 +104,10 @@ namespace HareketRehberi.BL.UserLessonProgressLogBL
             var response = await _userLessonProgressLogRepo.GetUserLessonLogsToday(userId);
             return response;
         }
+        public async Task<IEnumerable<object>> GetUserLessonLogsGeneralPre(int userId)
+        {
+            var response = await _userLessonProgressLogRepo.GetUserLessonLogsGeneralPre(userId);
+            return response;
+        }
     }
 }
