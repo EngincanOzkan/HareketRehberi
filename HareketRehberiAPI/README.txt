@@ -1,18 +1,7 @@
-1. web.config'e bunu ekle:
+1. SAMPLE_appsettings.json dosyasını kendinize göre düzenleyin ve SAMPLE_ ekini kaldırın,
 
-<system.webServer>
-...
-      <modules>
-	<remove name="WebDAVModule" />
-      </modules>
-      <handlers>
-        ...
-	<remove name="WebDAV" />
-      </handlers>
-...
-</system.webServer>
+2. MySQL db'nizi update edebilmek için projenin root konumundan(pwd C:/HareketRehberi/) aşağıdaki adımları tamamlayın:
+cd  ./HareketRehberiAPI
+dotnet ef database update
 
-2. Connection stringin: CHARSET=utf8; olmalı
-
-
-
+Api projesi çalışmaya hazır
