@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { SharedService } from '../shared.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class UserPREComponent implements OnInit {
 
   constructor(
     public shared: SharedService,
-    public router: Router
+    public router: Router,
+    public spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
@@ -24,8 +26,10 @@ export class UserPREComponent implements OnInit {
   }
 
   fillLessons() {
+    this.spinner.show();
     this.shared.getUsers_p_r_e(this.userId).subscribe(data => {
       this.shared.getUserLessonLogsToday(this.userId).subscribe(response => {
+        this.spinner.hide();
         let usersProgresses = response.map(a => a.lessonId);
         data.forEach(q => {
           if(usersProgresses.includes(q.id))
@@ -35,8 +39,12 @@ export class UserPREComponent implements OnInit {
             q.done = false;
           }
         });
+      } ,error => {
+        this.spinner.hide();
       })
       this.LessonList = data;
+    } ,error => {
+      this.spinner.hide();
     }) 
   }
 

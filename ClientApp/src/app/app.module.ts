@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common'
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -55,7 +57,8 @@ import { GoEvaluationComponent } from './user-lesson/go-evaluation/go-evaluation
 import { StartLessonComponent } from './user-lesson/start-lesson/start-lesson.component';
 import { UserPREComponent } from './user-p-r-e/user-p-r-e.component';
 import { BottomNavbarComponent } from './bottom-navbar/bottom-navbar.component';
-
+import { environment } from '../environments/environment';
+import { PrivacypolicyComponent } from './privacypolicy/privacypolicy.component';
 
 
 export function tokenGetter() {
@@ -95,7 +98,8 @@ export function tokenGetter() {
     GoEvaluationComponent,
     StartLessonComponent,
     UserPREComponent,
-    BottomNavbarComponent
+    BottomNavbarComponent,
+    PrivacypolicyComponent
   ],
   imports: [
     BrowserModule,
@@ -103,6 +107,7 @@ export function tokenGetter() {
     HttpClientModule,
     FormsModule,
     PdfViewerModule,
+    NgxSpinnerModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'admin', component: AdminComponent, canActivate: [AdminAuthGuard] },
@@ -123,6 +128,7 @@ export function tokenGetter() {
       { path: 'evaluations/:evaluationid/questions/add', component: AddEditQuestionComponent, canActivate: [AdminAuthGuard] },
       { path: 'evaluations/:evaluationid/questions/edit/:id', component: AddEditQuestionComponent, canActivate: [AdminAuthGuard] },
       { path: 'lesson', component: UserLessonComponent, canActivate: [AuthGuard] },
+      { path: 'privacypolicy', component: PrivacypolicyComponent },
       { path: 'login', component: LoginComponent },
       { path: '404', component : NotFoundComponent},
       { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -131,7 +137,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ['localhost:5001'],
+        allowedDomains: [environment.root_URL],
         disallowedRoutes: []
       }
     }),
@@ -150,7 +156,7 @@ export function tokenGetter() {
     SimpleNotificationsModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [AuthGuard, AdminAuthGuard, SharedService, { provide: MOMENT, useValue: dayjs },],
+  providers: [AuthGuard, AdminAuthGuard, SharedService, { provide: MOMENT, useValue: dayjs }, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
   
 })

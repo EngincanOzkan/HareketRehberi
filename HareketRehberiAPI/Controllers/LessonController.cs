@@ -4,6 +4,7 @@ using HareketRehberi.Domain.Consts;
 using HareketRehberi.Domain.Models.Requests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HareketRehberiAPI.Controllers
@@ -14,11 +15,13 @@ namespace HareketRehberiAPI.Controllers
     {
         private readonly ILessonBL _lessonBL;
         private readonly IEvaluationBL _evaluationBL;
+        private readonly ILogger<LessonController> _logger;
 
-        public LessonController(ILessonBL lessonBL, IEvaluationBL evaluationBL)
+        public LessonController(ILessonBL lessonBL, IEvaluationBL evaluationBL, ILogger<LessonController> logger)
         {
             _lessonBL = lessonBL;
             _evaluationBL = evaluationBL;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -52,6 +55,7 @@ namespace HareketRehberiAPI.Controllers
         [Authorize(Roles = Role.Admin)]
         public async Task<IActionResult> Create([FromBody] LessonRequest lesson)
         {
+            _logger.LogError(lesson.LessonName);
             return Ok(await _lessonBL.Create(lesson));
         }
 
@@ -59,6 +63,7 @@ namespace HareketRehberiAPI.Controllers
         [Authorize(Roles = Role.Admin)]
         public async Task<IActionResult> Update([FromBody] LessonRequest lesson)
         {
+            _logger.LogError(lesson.LessonName);
             return Ok(await _lessonBL.Update(lesson));
         }
 

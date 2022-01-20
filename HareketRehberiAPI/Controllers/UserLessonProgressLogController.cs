@@ -143,5 +143,12 @@ namespace HareketRehberiAPI.Controllers
         {
             return Ok(await _userLessonProgressLogBL.GetUserLessonLogsGeneralPre(userId));
         }
+
+        [HttpGet("GetAllLogs")]
+        [Authorize(Roles = Role.Admin)]
+        public async Task<IActionResult> GetAllLogs()
+        {
+            return Ok(await _userLessonProgressLogBL.GetAllLogs());
+        }
     }
 }

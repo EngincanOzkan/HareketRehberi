@@ -28,8 +28,8 @@ export class StartLessonComponent implements OnInit {
 
   startLessonClick() {
     var data = {
-      UserId: this.userId,
-      lessonId: this.lessonId
+      UserId: Number(this.userId),
+      lessonId: Number(this.lessonId)
     }
     this.shared.userLessonProgressLogCreateStartLog(data).subscribe(response => {
       this.operationIdentifier = response.operationIdentifier;

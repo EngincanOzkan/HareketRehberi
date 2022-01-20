@@ -1,1 +1,39 @@
-<p>admin works!</p>
+<br>
+<div *ngFor="let process of reportData">
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <td><strong>Kullanıcı : </strong>{{process.userName}}</td>
+                <td><strong>Eğitim : </strong>{{process.lesson.lessonName}}</td>
+                <td *ngIf="process.lesson.progressiveRelaxationExercise"> <strong>Eğitim Türü : </strong>Progresif Gevşeme Egzersizi </td>
+                <td *ngIf="!process.lesson.progressiveRelaxationExercise"> <strong>Eğitim Türü : </strong>Normal </td>
+            </tr>
+            <tr>
+                <td><strong>Başlama tarihi : </strong>{{process.strStartTime}}</td>
+                <td><strong>Bitiriş tarihi : </strong>{{process.strEndTime}}</td>
+                <td><strong>Toplanan harcanan süre : </strong>{{process.timeSpend}}</td>
+            </tr>
+            <tr *ngIf="process.evaluation">
+                <td><strong>Değerlendirme : </strong> {{process.evaluation.evaluationName}}</td>
+                <td colspan=2>
+                    <strong>Doğru Cevap: </strong> {{process.trueAnswers}} <br>
+                    <strong>Yanlış Cevap: </strong> {{process.falseAnswers}} <br>
+                    <strong>Boş Cevap: </strong> {{process.empty}}
+                </td>
+            </tr>
+            <div *ngIf="process.evaluation" >
+                <div *ngFor="let evaluationAndAnswer of process.evaluationAndAnswers; let i = index;">
+                    <tr >
+                        <td><strong>Soru : </strong> {{process.questions[i].questionText}} <br>
+                            <div *ngIf="process.evaluation.isSurvey"><strong>Cevap: </strong> {{process.givenAnswers[i]?.answerText}} <br></div>
+                            <div *ngIf="!process.evaluation.isSurvey"><strong>Verilen Cevap: </strong> {{process.givenAnswers[i]?.answerText}} <br></div>
+                            <div *ngIf="!process.evaluation.isSurvey"><strong>Doğru Cevap: </strong> {{process.answerRight[i]?.answerText}}  <br></div>
+                        </td>
+                        <hr/>
+                    </tr>
+                </div>
+            </div>
+        </tbody>
+    </table>
+    <hr class="new5">
+</div>

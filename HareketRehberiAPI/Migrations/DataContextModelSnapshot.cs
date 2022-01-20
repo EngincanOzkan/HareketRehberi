@@ -14,8 +14,8 @@ namespace HareketRehberiAPI.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.5");
+                .HasAnnotation("ProductVersion", "3.1.14")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("HareketRehberi.Domain.Models.Entities.Answer", b =>
                 {
@@ -295,8 +295,6 @@ namespace HareketRehberiAPI.Migrations
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Question");
                 });
 
             modelBuilder.Entity("HareketRehberi.Domain.Models.Entities.LessonEvaluationMatch", b =>
@@ -312,10 +310,6 @@ namespace HareketRehberiAPI.Migrations
                         .HasForeignKey("LessonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Evaluation");
-
-                    b.Navigation("Lesson");
                 });
 
             modelBuilder.Entity("HareketRehberi.Domain.Models.Entities.LessonPdfFileRelation", b =>
@@ -325,8 +319,6 @@ namespace HareketRehberiAPI.Migrations
                         .HasForeignKey("LessonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Lesson");
                 });
 
             modelBuilder.Entity("HareketRehberi.Domain.Models.Entities.LessonSoundFileRelation", b =>
@@ -336,8 +328,6 @@ namespace HareketRehberiAPI.Migrations
                         .HasForeignKey("LessonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Lesson");
                 });
 
             modelBuilder.Entity("HareketRehberi.Domain.Models.Entities.LessonUserMatch", b =>
@@ -353,10 +343,6 @@ namespace HareketRehberiAPI.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Lesson");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("HareketRehberi.Domain.Models.Entities.Question", b =>
@@ -366,8 +352,6 @@ namespace HareketRehberiAPI.Migrations
                         .HasForeignKey("EvaluationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Evaluation");
                 });
 
             modelBuilder.Entity("HareketRehberi.Domain.Models.Entities.UserLessonProgressLog", b =>
@@ -383,10 +367,6 @@ namespace HareketRehberiAPI.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Lesson");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("HareketRehberi.Domain.Models.Entities.UserLessonsEvaluationsQuestionsAnswers", b =>
@@ -408,12 +388,6 @@ namespace HareketRehberiAPI.Migrations
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Evaluation");
-
-                    b.Navigation("Lesson");
-
-                    b.Navigation("Question");
                 });
 #pragma warning restore 612, 618
         }

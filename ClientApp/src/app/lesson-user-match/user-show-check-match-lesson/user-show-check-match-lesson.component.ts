@@ -47,6 +47,8 @@ export class UserShowCheckMatchLessonComponent implements OnInit {
         var input = this.document.getElementById("user_"+lessonUser.userId) as HTMLInputElement;
         input.checked = true;
       })
+      this.selectedUserIds = this.lessonUsers.map((obj:any) => {return obj.userId});
+      console.log(this.selectedUserIds)
     })
   }
 
@@ -54,7 +56,7 @@ export class UserShowCheckMatchLessonComponent implements OnInit {
     if(this.lessonId)
     {
       var data = {
-        LessonId: this.lessonId,
+        LessonId: Number(this.lessonId),
         userIds: this.selectedUserIds,
       }
       this.service.addLessonUserMatch(data).subscribe(response => {

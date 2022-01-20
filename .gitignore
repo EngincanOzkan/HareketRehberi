@@ -455,3 +455,5 @@ $RECYCLE.BIN/
 
 HareketRehberiAPI/Resources/PDFs/*
 HareketRehberiAPI/Resources/Sounds/*
+
+HareketRehberiAPI/appsettings.json

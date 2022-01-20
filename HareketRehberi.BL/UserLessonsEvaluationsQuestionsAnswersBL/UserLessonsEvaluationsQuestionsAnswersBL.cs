@@ -84,6 +84,7 @@ namespace HareketRehberi.BL.UserLessonsEvaluationsQuestionsAnswersBL
                 userLessonsEvaluationsQuestionsAnswers.OperationIdentifier = startEvaluationRequest.OperationIdentifier;
                 userLessonsEvaluationsQuestionsAnswers.QuestionId = question.Id;
                 userLessonsEvaluationsQuestionsAnswers.IsSurvey = evaluation.IsSurvey;
+                userLessonsEvaluationsQuestionsAnswers.RightAnswerId = answers.Where(q => q.IsRightAnswer == true).Select(q => q.Id).FirstOrDefault();
 
                 userLessonsEvaluationsQuestionsAnswers = await _userLessonsEvaluationsQuestionsAnswersRepo.CreateAsync(userLessonsEvaluationsQuestionsAnswers);
 

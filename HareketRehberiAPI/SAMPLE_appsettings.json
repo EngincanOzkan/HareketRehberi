@@ -9,9 +9,10 @@
   "AllowedHosts": "*",
   "MyAppConfig": {
     "BaseSiteRoot": "https://localhost:5001",
-    "Secret": "SuperSecretKey@345"
+    "ClientSiteRoot": "https://localhost:4200",
+    "Secret": "SuperSecretKey123"
   },
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Port=3306;Database=hkrdb;user=root;Pwd=Secret123;Persist Security Info=False;Connect Timeout=300;Allow User Variables=True;sslMode=None;"
+    "DefaultConnection": "Server=localhost;Port=3306;Database=DBNAME;user=ROOT;Pwd=SECRET123;Persist Security Info=False;Connect Timeout=300;Allow User Variables=True;sslMode=None;CHARSET=utf8;"
   }
 }

@@ -50,7 +50,7 @@ export class AddEditQuestionComponent implements OnInit {
   save(form: NgForm) {
     if(!this.question)
     {
-      form.value.evaluationId = this.evaluationId;
+      form.value.evaluationId = Number(this.evaluationId);
       const credentials = JSON.stringify(form.value);
       this.shared.addQuestion(credentials).subscribe(response => {
         this._notifications.success("Başarılı", "Kaydetme işlemi başarıyla tamamlandı", {timeOut:2000})
@@ -60,8 +60,8 @@ export class AddEditQuestionComponent implements OnInit {
       });
     }else //update mode
     {
-      form.value.id = this.question.id;
-      form.value.evaluationId = this.evaluationId;
+      form.value.id = Number(this.question.id);
+      form.value.evaluationId = Number(this.evaluationId);
       var credentials = JSON.stringify(form.value);
       this.shared.updateQuestion(credentials).subscribe(response => {
         this._notifications.success("Başarılı", "Güncelleme işlemi başarıyla tamamlandı", {timeOut:2000})

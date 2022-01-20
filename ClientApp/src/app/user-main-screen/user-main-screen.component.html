@@ -1,5 +1,6 @@
 <div class="content">
-  <div class="list-group" *ngFor="let lesson of LessonList">
+  <ngx-spinner></ngx-spinner>
+  <div class="list-group" #myAnswers *ngFor="let lesson of LessonList">
       <a style="cursor: pointer" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" (click)="startLesson(lesson.id)">
         <div class="ms-2 me-auto fw-bold">
             {{lesson.lessonName}}

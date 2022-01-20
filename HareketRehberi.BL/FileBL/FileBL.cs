@@ -61,7 +61,7 @@ namespace HareketRehberi.BL.FileBL
             }
             catch (Exception ex)
             {
-                throw new ($"Internal server error: {ex}");
+                throw new Exception($"Internal server error: {ex}");
             }
         }
 
@@ -147,7 +147,7 @@ namespace HareketRehberi.BL.FileBL
             }
             catch (Exception ex)
             {
-                throw new($"Internal server error: {ex}");
+                throw new Exception($"Internal server error: {ex}");
             }
         }
 

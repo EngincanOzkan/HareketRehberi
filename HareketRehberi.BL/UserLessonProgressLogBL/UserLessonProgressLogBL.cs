@@ -1,5 +1,6 @@
 ﻿using HareketRehberi.Data.Repos.UserLessonProgressLogRepos;
 using HareketRehberi.Domain.Models.Entities;
+using HareketRehberi.Domain.Models.Requests;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace HareketRehberi.BL.UserLessonProgressLogBL
         }
 
         public async Task<UserLessonProgressLog> Delete(int id)
-        { 
+        {
             var response = await _userLessonProgressLogRepo.DeleteAsync(id);
             return response;
         }
@@ -107,6 +108,12 @@ namespace HareketRehberi.BL.UserLessonProgressLogBL
         public async Task<IEnumerable<object>> GetUserLessonLogsGeneralPre(int userId)
         {
             var response = await _userLessonProgressLogRepo.GetUserLessonLogsGeneralPre(userId);
+            return response;
+        }
+
+        public async Task<IEnumerable<ReportModel>> GetAllLogs()
+        {
+            var response = await _userLessonProgressLogRepo.GetAllLogs();
             return response;
         }
     }

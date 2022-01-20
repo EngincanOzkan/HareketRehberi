@@ -17,7 +17,7 @@
 </form>
 <br />
 
-<div class="container-fluid" *ngIf="questionForm">
+<div class="container-fluid" *ngIf="question.id">
   <div *ngFor="let value of AnswerEditComponentValues; let i = index">
     <app-answer-add-edit-delete-question 
       [(AnswerEditComponentValues)]="AnswerEditComponentValues" 

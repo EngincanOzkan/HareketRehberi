@@ -28,7 +28,9 @@ namespace HareketRehberiAPI.Controllers
             try
             {
                 var result = await _fileBL.UploadPdfFile(Request.Form.Files[0], request.LessonId);
-                return result ? Ok() : BadRequest();
+                if (result)
+                    return Ok();
+                else return BadRequest();
             }
             catch (Exception ex)
             {

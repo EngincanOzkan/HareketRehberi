@@ -1,4 +1,4 @@
-using AutoMapper;
+﻿using AutoMapper;
 using HareketRehberi.BL.AnswerBL;
 using HareketRehberi.BL.EvaluationBL;
 using HareketRehberi.BL.FileBL;
@@ -7,6 +7,7 @@ using HareketRehberi.BL.LessonEvaluationMatchBL;
 using HareketRehberi.BL.LessonPdfFileRelationBL;
 using HareketRehberi.BL.LessonSoundFileRelationBL;
 using HareketRehberi.BL.LessonUserMatchBL;
+using HareketRehberi.BL.Logger;
 using HareketRehberi.BL.QuestionBL;
 using HareketRehberi.BL.SystemUserBL;
 using HareketRehberi.BL.UserLessonProgressLogBL;
@@ -47,9 +48,13 @@ namespace HareketRehberiAPI
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Microsoft.AspNetCore.Hosting.IHostingEnvironment _hostingEnvironment { get; set; }
+
+        public Startup(IConfiguration configuration,
+            Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment)
         {
             Configuration = configuration;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         public IConfiguration Configuration { get; }
@@ -61,8 +66,9 @@ namespace HareketRehberiAPI
             {
                 o.AddPolicy("EnableCORS", builder =>
                 {
-                    builder.AllowAnyOrigin()//WithOrigins("https://localhost:4200")
+                    builder.AllowAnyOrigin()//WithOrigins(Configuration.GetValue<string>("MyAppConfig:ClientSiteRoot"))
                     .AllowAnyHeader()
+                    .SetIsOriginAllowed(origin => true) // allow any origin
                     .AllowAnyMethod();
                 });
             });
@@ -151,15 +157,17 @@ namespace HareketRehberiAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddProvider(new LoggerProvider(_hostingEnvironment));
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HareketRehberiAPI v1"));
             }
-
+            
             app.UseHttpsRedirection();
 
             app.UseCors("EnableCORS");

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { SharedService } from '../shared.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class UserMainScreenComponent implements OnInit {
 
   constructor(
     public shared: SharedService,
-    public router: Router
+    public router: Router,
+    public spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
@@ -22,8 +24,10 @@ export class UserMainScreenComponent implements OnInit {
   }
 
   fillLessons() {
+    this.spinner.show();
     this.shared.getUsersLessons(this.userId).subscribe(data => {
       this.shared.getUserLessonLogsGeneral(this.userId).subscribe(response => {
+        this.spinner.hide();
         let usersProgresses = response.map(a => a.lessonId);
         data.forEach(q => {
           if(usersProgresses.includes(q.id))
@@ -33,8 +37,12 @@ export class UserMainScreenComponent implements OnInit {
             q.done = false;
           }
         });
+      },error => {
+        this.spinner.hide();
       })
       this.LessonList = data;
+    }, error => {
+      this.spinner.hide();
     }) 
   }
 

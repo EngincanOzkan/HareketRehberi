@@ -26,7 +26,6 @@ namespace HareketRehberiAPI.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = Role.Admin)]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();

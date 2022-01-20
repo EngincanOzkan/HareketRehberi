@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "xx8RHASU8Is6mLndUGL3YqJwPotShPJjUsCMuhVvBq2WuD6HjLZuJSpDSNcrOfNAP4t420GRyCaONGuyBKeHkA==",
+  "dgSpecHash": "ATgum6yfWPAmmqc5c3vo2oZQhcjIEI1UTsc4DU3hM8AKmeHBtf90Q5xd3yo/oIH2BPLFALSfbA4VUoQ5JV6UDA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Engincan\\source\\repos\\HareketRehberi\\HareketRehberi.Domain\\HareketRehberi.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Engincan\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Engincan\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
-    "C:\\Users\\Engincan\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+    "C:\\Users\\Engincan\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
+    "C:\\Users\\Engincan\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\Engincan\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Engincan\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
   ],
   "logs": []
 }

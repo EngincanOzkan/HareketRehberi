@@ -1,4 +1,5 @@
 ﻿using HareketRehberi.Domain.Models.Entities;
+using HareketRehberi.Domain.Models.Requests;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -87,5 +88,74 @@ namespace HareketRehberi.Data.Repos.UserLessonProgressLogRepos
             return result.Where(q => q.ProgressiveRelaxationExercise == true && q.UserId == userId && q.IsStart == false);
         }
 
+        public async Task<IEnumerable<ReportModel>> GetAllLogs() {
+            var userProgresses = await _context.UserLessonProgressLogs.Join(_context.Lessons, p => p.LessonId, l => l.Id, (p, l) => new ReportModel
+            {
+                Progress = p,
+                Lesson = l
+            }).Join(_context.SystemUsers, q => q.Progress.UserId, u => u.Id, (q, u) => new ReportModel
+            {
+                Progress = q.Progress,
+                Lesson = q.Lesson,
+                UserName = u.UserName
+            }).Where(q => q.Progress.IsStart == true).OrderBy(q => q.Progress.UserId).ToListAsync();
+
+            foreach (var progress in userProgresses)
+            {
+                var evaluationAndAnswers = await _context.UserLessonsEvaluationsQuestionsAnswersTable.Where(q => q.OperationIdentifier == progress.Progress.OperationIdentifier).ToListAsync();
+
+                var firstQuestionData = evaluationAndAnswers.FirstOrDefault();
+                Evaluation evaluation = null;
+
+                if (firstQuestionData != null)
+                {
+                    evaluation = await _context.Evaluations.Where(q => q.Id == firstQuestionData.EvaluationId).FirstOrDefaultAsync();
+                }
+                if (evaluation != null)
+                {
+                    progress.EvaluationAndAnswers = evaluationAndAnswers;
+                    progress.Evaluation = evaluation;
+
+                    var emptyAnswers = 0;
+                    var trueAnswers = 0;
+                    var falseAnswers = 0;
+
+                    foreach (var answerInfo in evaluationAndAnswers)
+                    {
+                        Answer answerRight = null;
+                        if (evaluation.IsSurvey == false)
+                            answerRight = _context.Answers.Where(q => q.Id == answerInfo.RightAnswerId).FirstOrDefault();
+                        var answerGiven = _context.Answers.Where(q => q.Id == answerInfo.AnswerId).FirstOrDefault();
+
+                        progress.AnswerRight.Add(answerRight);
+                        progress.GivenAnswers.Add(answerGiven);
+
+                        if (answerGiven == null) emptyAnswers++;
+                        else if (answerGiven?.Id == answerRight?.Id) trueAnswers++;
+                        else if (answerGiven?.Id != answerRight?.Id) falseAnswers++;
+
+                        var question = _context.Questions.Where(q => q.Id == answerInfo.QuestionId).FirstOrDefault();
+                        progress.Questions.Add(question);
+                    }
+
+                    progress.Empty = emptyAnswers;
+                    if (progress.Evaluation.IsSurvey == false) {
+                        progress.TrueAnswers = trueAnswers;
+                        progress.FalseAnswers = falseAnswers;
+                    }
+                }
+
+                progress.StartTime = progress.Progress.OperationTime;
+                progress.StrStartTime = ((DateTime)progress.StartTime).ToString("dd/MM/yyyy HH:mm");
+                var endProcess = await _context.UserLessonProgressLogs.Where(q => q.OperationIdentifier == progress.Progress.OperationIdentifier && q.IsStart == false).FirstOrDefaultAsync();
+                if (endProcess != null) {
+                    progress.EndTime = endProcess.OperationTime;
+                    progress.StrEndTime = ((DateTime)progress.EndTime).ToString("dd/MM/yyyy HH:mm");
+                    TimeSpan span = ((DateTime)progress.EndTime - (DateTime)progress.StartTime);
+                    progress.TimeSpend = String.Format("{0} saat, {1} dakika, {2} saniye", span.Hours, span.Minutes, span.Seconds);
+                }
+            }
+            return userProgresses;
+        }
     }
 }

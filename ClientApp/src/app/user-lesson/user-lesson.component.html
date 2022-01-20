@@ -2,6 +2,7 @@
   <div *ngIf="!goEvaluation">
     <div *ngIf="!endLesson">
       <h4>{{lessonTitle}}</h4>
+      <ngx-spinner></ngx-spinner>
       <div style='position: relative; height: 100%; margin:20px; border: 1px solid #ccc;' class="mb-0 mt-0">
           <pdf-viewer [src]="pdfObject"
                       [autoresize]="true"
@@ -17,7 +18,7 @@
           <div class="col align-middle d-flex justify-content-center">
             <button class="btn align-self-end" (click)="previousPage()"><i class="bi bi-arrow-left-circle-fill fs-1"></i></button>
           </div>
-          <div class="col align-middle d-flex justify-content-center">
+          <div class="col align-middle d-flex justify-content-center" *ngIf="soundDownloadUrl">
             <button class="btn align-self-end" (click)="playAudio()"><i *ngIf="audio.paused" class="bi bi-play-circle-fill fs-1"></i> <i *ngIf="!audio.paused" class="bi bi-pause-circle fs-1"></i></button>
           </div>
           <div class="col align-middle d-flex justify-content-center">
@@ -43,6 +44,7 @@
       [evaluationName]="evaluation.evaluationName"
       [startEvaluation]="startEvaluation"
       [operationIdentifier]="operationIdentifier"
+      [isSurvey]="evaluation.isSurvey"
     >
     </app-go-evaluation>
   </div>

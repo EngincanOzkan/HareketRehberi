@@ -3,6 +3,7 @@
     public class MyAppConfig
     {
         public string BaseSiteRoot { get; set; }
+        public string ClientSiteRoot { get; set; }
         public string Secret { get; set; }
     }
 }

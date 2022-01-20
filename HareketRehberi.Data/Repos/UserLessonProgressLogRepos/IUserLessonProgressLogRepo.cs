@@ -1,4 +1,5 @@
 ﻿using HareketRehberi.Domain.Models.Entities;
+using HareketRehberi.Domain.Models.Requests;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -18,5 +19,6 @@ namespace HareketRehberi.Data.Repos.UserLessonProgressLogRepos
         Task<IEnumerable<UserLessonProgressLog>> GetUserLessonLogsGeneral(int userId);
         Task<IEnumerable<UserLessonProgressLog>> GetUserLessonLogsToday(int userId);
         Task<IEnumerable<object>> GetUserLessonLogsGeneralPre(int userId);
+        Task<IEnumerable<ReportModel>> GetAllLogs();
     }
 }

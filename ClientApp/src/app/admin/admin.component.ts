@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  public reportData: any[] = [];
+
+  constructor(
+    private shared: SharedService
+  ) { }
 
   ngOnInit(): void {
+    this.shared.getUsersAllLogList().subscribe(response => {
+      this.reportData = response;
+    })
   }
 
 }

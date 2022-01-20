@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { CalendarEvent, 
   CalendarView,
   DAYS_OF_WEEK,
@@ -8,6 +10,7 @@ import { CalendarEvent,
 } from 'angular-calendar';
 import dayjs from 'dayjs';
 import tr from 'dayjs/locale/tr';
+import { AdminAuthGuard } from '../guards/admin-auth.guard';
 import { SharedService } from '../shared.service';
 
 dayjs.locale({
@@ -30,8 +33,17 @@ export class HomeComponent implements OnInit {
   viewDate: Date = new Date();
 
   constructor(
-    private shared: SharedService
+    private shared: SharedService,
+    private router: Router,
+    private authAdminGuard: AdminAuthGuard,
+    private jwtHelper: JwtHelperService
   ) {
+    const token = localStorage.getItem('jwt');
+
+    if(token && !this.jwtHelper.isTokenExpired(token) && this.jwtHelper.decodeToken(token)['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === "Admin"){
+      this.router.navigate(["/admin"]);
+    } 
+    
     dayjs.locale(tr);
     this.userId = localStorage.getItem("userId");
   }

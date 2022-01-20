@@ -4,15 +4,17 @@
     <div class="jumbotron d-flex align-items-center min-vh-100">
       <div class="container text-center">
         <p>{{evaluationName}}</p>
+        <p *ngIf="!isSurvey">Değerlendirme sorularında doğru cevaplar <i id="realans" class="bi bi-arrow-left-circle-fill fs-6 text-success"></i> ile gösterilecektir. <br> Verdiğiniz cevap doğru ise <i id="ans" class="bi bi-emoji-smile-fill fs-6 text-success"></i> ile gösterilecektir.<br> Yanlış cevaplar <i id="ans" class="bi bi-emoji-frown-fill fs-6 text-danger"></i> ile belirtilecektir. <br> Soruyu boş geçtiyseniz doğru cevap şıkkı <i id="realans" class="bi bi-emoji-neutral-fill fs-6 text-warning"></i> ifadesi ile belirtilecektir. <br>
+        Bir soruyu cevapladıktan veya boş geçtikten sonra cevabınızı değiştiremezsiniz.</p>
         <button class="btn btn-success" type="button" (click)="startEvaluationClick()">Değerlendirmeye başlamak için tıklayınız</button>
       </div>
     </div>
   </div>
-  <div *ngIf="startEvaluation">
+  <div *ngIf="startEvaluation" style="padding: 15px">
       <p>{{questionData[questionIndex].questionText}}</p>
       <div class="row" *ngFor="let answer of questionData[questionIndex].answers; let i = index">
-          <div class="col text-center">
-              <input type="radio" [(ngModel)]="selectedAnswer" class="form-check-input" name="matches" (change)="onItemChange(answer.id)" [value]="answer.id">
+          <div class="col" #myAnswers [id]="answerIdTag+answer.id">
+              <input type="radio" [attr.disabled]="answersDisabled ? '' : null" [(ngModel)]="selectedAnswer" class="form-check-input" name="matches" (change)="onItemChange(answer.id)" [value]="answer.id">
               {{answer.answerText}}
           </div>
       </div>

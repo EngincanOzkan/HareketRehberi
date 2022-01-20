@@ -51,8 +51,8 @@ export class ShowCheckMatchComponent implements OnInit {
     if(this.lessonId && this.selectedEvaluationId)
     {
       var data = {
-        LessonId: this.lessonId,
-        EvaluationId: this.selectedEvaluationId
+        LessonId: Number(this.lessonId),
+        EvaluationId: Number(this.selectedEvaluationId)
       }
       this.service.addLessonEvaluation(data).subscribe(response => {
         this._notifications.success("Başarılı", "Kaydetme işlemi başarıyla tamamlandı", {timeOut:2000})
